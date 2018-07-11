@@ -51,6 +51,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         g.fillRect(0, 0, 692, 3);
         g.fillRect(691, 0, 3, 592);
 
+        // score
+        g.setColor(Color.white);
+        g.setFont(new Font("serif", Font.BOLD, 25));
+        g.drawString("" + score, 592, 30);
+
         // paddle
         g.setColor(Color.green);
         g.fillRect(playerX, 550, 100, 8);
@@ -58,6 +63,32 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         // ball
         g.setColor(Color.yellow);
         g.fillOval(ballPosX, ballPosY, 20, 20);
+
+        if (totalBricks <= 0) {
+            play = false;
+            ballXDir = 0;
+            ballYDir = 0;
+            g.setColor(Color.red);
+            g.setFont(new Font("serif", Font.BOLD, 30));
+            g.drawString("You Win! Score: " + score, 190, 300);
+
+            g.setFont(new Font("serif", Font.BOLD, 20));
+            g.drawString("Press Enter to restart ", 230, 350);
+        }
+
+        if (ballPosY > 570) {
+            play = false;
+            ballXDir = 0;
+            ballYDir = 0;
+            g.setColor(Color.red);
+            g.setFont(new Font("serif", Font.BOLD, 30));
+            g.drawString("Game Over. Score: " + score, 190, 300);
+
+            g.setFont(new Font("serif", Font.BOLD, 20));
+            g.drawString("Press Enter to restart ", 230, 350);
+        }
+
+        g.dispose();
 
     }
 
@@ -77,6 +108,25 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 moveLeft();
             }
         }
+        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+            if (!play) {
+                resetGame();
+            }
+        }
+    }
+
+    private void resetGame() {
+        play = true;
+        ballPosX = 120;
+        ballPosY = 350;
+        ballXDir = -1;
+        ballYDir = -2;
+        playerX = 310;
+        score = 0;
+        totalBricks = 21;
+        map = new MapGenerator(3, 7);
+
+        repaint();
     }
 
     private void moveRight() {
