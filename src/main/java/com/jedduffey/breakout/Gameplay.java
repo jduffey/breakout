@@ -20,7 +20,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private int playerX = 310;
 
     private int ballPosX = 120;
-    private int ballPoxY = 350;
+    private int ballPosY = 350;
     private int ballXDir = -1;
     private int ballYDir = -2;
 
@@ -51,7 +51,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         // ball
         g.setColor(Color.yellow);
-        g.fillOval(ballPosX, ballPoxY, 20, 20);
+        g.fillOval(ballPosX, ballPosY, 20, 20);
 
     }
 
@@ -60,14 +60,14 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             if (playerX >= 600) {
                 playerX = 600;
-            }else {
+            } else {
                 moveRight();
             }
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             if (playerX < 10) {
                 playerX = 10;
-            }else {
+            } else {
                 moveLeft();
             }
         }
@@ -85,7 +85,24 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
         timer.start();
+
+        if (play) {
+
+            ballPosX += ballXDir;
+            ballPosY += ballYDir;
+            if (ballPosX < 0) {
+                ballXDir = -ballXDir;
+            }
+            if (ballPosY < 0) {
+                ballYDir = -ballYDir;
+            }
+            if (ballPosX > 670) {
+                ballXDir = -ballYDir;
+            }
+        }
+
         repaint();
     }
 
