@@ -85,6 +85,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        timer.start();
+        repaint();
     }
 
     @Override
