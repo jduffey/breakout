@@ -100,6 +100,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 ballYDir = -ballYDir;
             }
 
+            A:
             for (int i = 0; i < map.map.length; i++) {
                 for (int j = 0; j < map.map[0].length; j++) {
                     if (map.map[i][j] > 0) {
@@ -117,6 +118,13 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                             totalBricks--;
                             score += 5;
 
+                            if (ballPosX + 19 <= brickRect.x || ballPosX + 1 >= brickRect.x + brickRect.width) {
+                                ballXDir = -ballXDir;
+                            } else {
+                                ballYDir = -ballYDir;
+                            }
+
+                            break A;
                         }
                     }
                 }
@@ -136,6 +144,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         }
 
         repaint();
+
     }
 
     @Override
