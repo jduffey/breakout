@@ -103,7 +103,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 ballYDir = -ballYDir;
             }
             if (ballPosX > 670) {
-                ballXDir = -ballYDir;
+                ballXDir = -ballXDir;
             }
         }
 
