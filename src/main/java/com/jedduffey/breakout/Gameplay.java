@@ -43,7 +43,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         g.setColor(Color.yellow);
         g.fillRect(0, 0, 3, 592);
         g.fillRect(0, 0, 692, 3);
-        g.fillRect(0, 0, 3, 592);
+        g.fillRect(691, 0, 3, 592);
 
         // paddle
         g.setColor(Color.green);
@@ -90,7 +90,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         if (play) {
 
-            ballPosX += ballXDir;
+            if (new Rectangle(ballPosX, ballPosY, 20, 20).intersects(new Rectangle(playerX, 550, 100, 8))){
+                ballYDir = -ballYDir;
+            }
+
+                ballPosX += ballXDir;
             ballPosY += ballYDir;
             if (ballPosX < 0) {
                 ballXDir = -ballXDir;
