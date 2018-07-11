@@ -14,7 +14,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     private int totalBricks = 21;
 
-    private Timer time;
+    private Timer timer;
     private int delay = 8;
 
     private int playerX = 310;
@@ -29,8 +29,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
-//        timer = new Timer(delay, this);
-//        timer.start();
+        timer = new Timer(delay, this);
+        timer.start();
     }
 
     public void paint(Graphics g) {
@@ -51,7 +51,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         // ball
         g.setColor(Color.yellow);
-        g.fillRect(ballPosX, ballPoxY, 20, 20);
+        g.fillOval(ballPosX, ballPoxY, 20, 20);
 
     }
 
