@@ -40,6 +40,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     public Gameplay() {
 
+        // Tutorial value is 3 * 7
         map = new BrickMapGenerator(3, 7);
         addKeyListener(this);
         setFocusable(true);
