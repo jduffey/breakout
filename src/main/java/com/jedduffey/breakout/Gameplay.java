@@ -55,12 +55,16 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     public Gameplay() {
 
         map = new BrickMapGenerator(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
-        bricksRemaining = INITIAL_BRICKMAP_ROWS * INITIAL_BRICKMAP_COLUMNS;
+        setBricksRemaining(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
         timer = new Timer(delay, this);
         timer.start();
+    }
+
+    private void setBricksRemaining(int initialBrickmapRows, int initialBrickmapColumns) {
+        bricksRemaining = initialBrickmapRows * initialBrickmapColumns;
     }
 
     public void paint(Graphics g) {
