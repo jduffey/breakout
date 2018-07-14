@@ -24,11 +24,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private int ballXDir = -1;
     private int ballYDir = -2;
 
-    private MapGenerator map;
+    private BrickMapGenerator map;
 
     public Gameplay() {
 
-        map = new MapGenerator(3, 7);
+        map = new BrickMapGenerator(3, 7);
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
@@ -124,7 +124,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         playerX = 310;
         score = 0;
         totalBricks = 21;
-        map = new MapGenerator(3, 7);
+        map = new BrickMapGenerator(3, 7);
 
         repaint();
     }
@@ -151,9 +151,9 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             }
 
             A:
-            for (int i = 0; i < map.map.length; i++) {
-                for (int j = 0; j < map.map[0].length; j++) {
-                    if (map.map[i][j] > 0) {
+            for (int i = 0; i < map.brickMap.length; i++) {
+                for (int j = 0; j < map.brickMap[0].length; j++) {
+                    if (map.brickMap[i][j] > 0) {
                         int brickX = j * map.brickWidth + 80;
                         int brickY = i * map.brickHeight + 50;
                         int brickWidth = map.brickWidth;
