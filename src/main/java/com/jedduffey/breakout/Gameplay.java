@@ -9,46 +9,45 @@ import java.awt.event.KeyListener;
 
 public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
-    // CONSTANTS
-    public static final int INITIAL_BALL_X_VELOCITY = -1; // Tutorial value is -1
-    public static final int INITIAL_BALL_Y_VELOCITY = -2; // Tutorial value is -2
-    public static final int INITIAL_BALL_X_POSITION = 120; // Tutorial value is 120
-    public static final int INITIAL_BALL_Y_POSITION = 350; // Tutorial value is 350
-    public static final int INITIAL_PLAYER_X_POS = 310; // Tutorial value is 310
     public static final int TIMER_DELAY_VALUE = 8; // Tutorial value is 8
+
+    public static final int INITIAL_BALL_X_VEL = -1; // Tutorial value is -1
+    public static final int INITIAL_BALL_Y_VEL = -2; // Tutorial value is -2
+    public static final int INITIAL_BALL_X_POS = 120; // Tutorial value is 120
+    public static final int INITIAL_BALL_Y_POS = 350; // Tutorial value is 350
+    public static final int INITIAL_PLAYER_X_POS = 310; // Tutorial value is 310
+
     public static final int INITIAL_SCORE = 0; // Tutorial value is 0
-    public static final int MAX_PLAYER_RIGHT_X_POS = 600; // Tutorial value is 600
+    public static final int INITIAL_BRICKMAP_ROWS = 3; // Tutorial value is 3
+    public static final int INITIAL_BRICKMAP_COLUMNS = 7; // Tutorial value is 7
+    public static final int SCORE_PER_BRICK_DESTROYED = 5; // Tutorial value is 5
+    public static final int PLAYER_X_MOVEMENT_PER_CLICK = 20; // Tutorial value is 20
+
+    public static final int PADDLE_Y_POS = 550; // Tutorial value is 550
     public static final int MIN_PLAYER_LEFT_X_POS = 10; // Tutorial value is 10
+    public static final int MAX_PLAYER_RIGHT_X_POS = 600; // Tutorial value is 600
     public static final int LEFTMOST_ALLOWED_BALL_X_POS = 0; // Tutorial value is 0
     public static final int RIGHTMOST_ALLOWED_BALL_X_POS = 670; // Tutorial value is 670
     public static final int TOPMOST_ALLOWED_BALL_Y_POS = 0; // Tutorial value is 0
-    public static final int INITIAL_BRICKMAP_ROWS = 3; // Tutorial value is 3
-    public static final int INITIAL_BRICKMAP_COLUMNS = 7; // Tutorial value is 7
-    public static final int PLAYER_X_MOVEMENT_PER_CLICK = 20; // Tutorial value is 20
-    public static final int PADDLE_Y_POSITION = 550; // Tutorial value is 550
+    public static final int BOTTOMMOST_ALLOWED_BALL_Y_POS = 570; // Tutorial value is 570
+
     public static final int PADDLE_WIDTH = 100; // Tutorial value is 100
     public static final int PADDLE_HEIGHT = 8; // Tutorial value is 8
     public static final int BALL_WIDTH = 20; // Tutorial value is 20
     public static final int BALL_HEIGHT = 20; // Tutorial value is 20
-    public static final int BOTTOMMOST_ALLOWED_BALL_POSITION_Y = 570; // Tutorial value is 570
-    public static final int SCORE_PER_BRICK_DESTROYED = 5;
 
-    // Play state, score, and remaining bricks
-    private boolean play;
-    private int score;
+    private boolean playState;
+    private int currentScore;
     private int bricksRemaining;
 
-    // Declare Timer
     private Timer timer;
 
-    // Set initial player and ball positions, and ball velocities
     private int currentPlayerPositionX;
     private int currentBallPositionX;
     private int currentBallPositionY;
     private int ballVelocityX;
     private int ballVelocityY;
 
-    // Initialize BrickMap
     private BrickMap gameBrickMap;
 
     public Gameplay() {
@@ -61,10 +60,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         timer.start();
     }
 
-    private void setBricksRemaining(int initialBrickmapRows, int initialBrickmapColumns) {
-        bricksRemaining = initialBrickmapRows * initialBrickmapColumns;
-    }
-
     public void paint(Graphics g) {
 
         drawActiveGameplayElements(g);
@@ -72,17 +67,17 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         // Once all bricks have been destroyed
         if (bricksRemaining <= 0) {
 
-            play = false;
+            playState = false;
 
             displayWinningMessage(g);
 
             displayAskToRestartMessage(g);
         }
 
-        // If ball falls below play zone
-        if (currentBallPositionY > BOTTOMMOST_ALLOWED_BALL_POSITION_Y) {
+        // If ball falls below playState zone
+        if (currentBallPositionY > BOTTOMMOST_ALLOWED_BALL_Y_POS) {
 
-            play = false;
+            playState = false;
 
             displayGameOverMessage(g);
 
@@ -110,11 +105,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         // Score
         g.setColor(Color.white);
         g.setFont(new Font("serif", Font.BOLD, 25));
-        g.drawString("" + score, 592, 30);
+        g.drawString("" + currentScore, 592, 30);
 
         // Paddle
         g.setColor(Color.green);
-        g.fillRect(currentPlayerPositionX, PADDLE_Y_POSITION, PADDLE_WIDTH, PADDLE_HEIGHT);
+        g.fillRect(currentPlayerPositionX, PADDLE_Y_POS, PADDLE_WIDTH, PADDLE_HEIGHT);
 
         // Ball
         g.setColor(Color.yellow);
@@ -129,14 +124,14 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private void displayGameOverMessage(Graphics g) {
         g.setColor(Color.red);
         g.setFont(new Font("serif", Font.BOLD, 30));
-        g.drawString("Game Over. Score: " + score + " / " +
+        g.drawString("Game Over. Score: " + currentScore + " / " +
                 INITIAL_BRICKMAP_ROWS * INITIAL_BRICKMAP_COLUMNS * SCORE_PER_BRICK_DESTROYED, 190, 300);
     }
 
     private void displayWinningMessage(Graphics g) {
         g.setColor(Color.red);
         g.setFont(new Font("serif", Font.BOLD, 30));
-        g.drawString("You Win! Score: " + score, 190, 300);
+        g.drawString("You Win! Score: " + currentScore, 190, 300);
     }
 
     @Override
@@ -156,33 +151,33 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             }
         }
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-            if (!play) {
+            if (!playState) {
                 prepareNewGame();
-                play = true;
+                playState = true;
             }
         }
     }
 
     private void prepareNewGame() {
-        play = false;
-        currentBallPositionX = INITIAL_BALL_X_POSITION;
-        currentBallPositionY = INITIAL_BALL_Y_POSITION;
-        ballVelocityX = INITIAL_BALL_X_VELOCITY;
-        ballVelocityY = INITIAL_BALL_Y_VELOCITY;
+        playState = false;
+        currentBallPositionX = INITIAL_BALL_X_POS;
+        currentBallPositionY = INITIAL_BALL_Y_POS;
+        ballVelocityX = INITIAL_BALL_X_VEL;
+        ballVelocityY = INITIAL_BALL_Y_VEL;
         currentPlayerPositionX = INITIAL_PLAYER_X_POS;
-        score = INITIAL_SCORE;
+        currentScore = INITIAL_SCORE;
         bricksRemaining = INITIAL_BRICKMAP_ROWS * INITIAL_BRICKMAP_COLUMNS;
         gameBrickMap = new BrickMap(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
         repaint();
     }
 
     private void moveRight() {
-        play = true;
+        playState = true;
         currentPlayerPositionX += PLAYER_X_MOVEMENT_PER_CLICK;
     }
 
     private void moveLeft() {
-        play = true;
+        playState = true;
         currentPlayerPositionX -= PLAYER_X_MOVEMENT_PER_CLICK;
     }
 
@@ -191,11 +186,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         timer.start();
 
-        if (play) {
+        if (playState) {
 
             // Detects collision of ball and paddle and reverses Y velocity if so
             if (new Rectangle(currentBallPositionX, currentBallPositionY, BALL_WIDTH, BALL_HEIGHT)
-                    .intersects(new Rectangle(currentPlayerPositionX, PADDLE_Y_POSITION, PADDLE_WIDTH, PADDLE_HEIGHT))) {
+                    .intersects(new Rectangle(currentPlayerPositionX, PADDLE_Y_POS, PADDLE_WIDTH, PADDLE_HEIGHT))) {
                 ballVelocityY = reverseBallVelocity(ballVelocityY);
             }
 
@@ -215,7 +210,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                         if (ballRect.intersects(brickRect)) {
                             gameBrickMap.setBrickValue(false, i, j);
                             bricksRemaining--;
-                            score += SCORE_PER_BRICK_DESTROYED;
+                            currentScore += SCORE_PER_BRICK_DESTROYED;
 
                             if (currentBallPositionX + 19 <= brickRect.x || currentBallPositionX + 1 >= brickRect.x + brickRect.width) {
                                 ballVelocityX = -ballVelocityX;
