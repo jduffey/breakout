@@ -57,25 +57,25 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     public void paint(Graphics g) {
 
-        // background
+        // Background
         g.setColor(Color.black);
         g.fillRect(1, 1, 692, 592);
 
-        // bricks
+        // Bricks
         map.draw((Graphics2D) g);
 
-        // borders
+        // Borders
         g.setColor(Color.yellow);
         g.fillRect(0, 0, 3, 592); // Left border
         g.fillRect(0, 0, 692, 3); // Top border
         g.fillRect(691, 0, 3, 592); // Right border
 
-        // score
+        // Score
         g.setColor(Color.white);
         g.setFont(new Font("serif", Font.BOLD, 25));
         g.drawString("" + score, 592, 30);
 
-        // paddle
+        // Paddle
         g.setColor(Color.green);
         g.fillRect(currentPlayerPositionX, 550, 100, 8);
 
@@ -86,7 +86,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         // Once all bricks have been destroyed
         if (totalBricks <= 0) {
             play = false;
-            
+
             g.setColor(Color.red);
             g.setFont(new Font("serif", Font.BOLD, 30));
             g.drawString("You Win! Score: " + score, 190, 300);
