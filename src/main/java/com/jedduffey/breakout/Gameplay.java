@@ -9,6 +9,11 @@ import java.awt.event.KeyListener;
 
 public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
+    public static final int INITIAL_BALL_X_VELOCITY = -1;
+    public static final int INITIAL_BALL_Y_VELOCITY = -2;
+    public static final int INITIAL_BALL_X_POSITION = 120;
+    public static final int INITIAL_BALL_Y_POSITION = 350;
+
     private boolean play = false;
     private int score = 0;
 
@@ -19,10 +24,10 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     private int playerX = 310;
 
-    private int ballPosX = 120;
-    private int ballPosY = 350;
-    private int ballXDir = -1;
-    private int ballYDir = -2;
+    private int ballPosX = INITIAL_BALL_X_POSITION;
+    private int ballPosY = INITIAL_BALL_Y_POSITION;
+    private int ballXDir = INITIAL_BALL_X_VELOCITY;
+    private int ballYDir = INITIAL_BALL_Y_VELOCITY;
 
     private BrickMapGenerator map;
 
