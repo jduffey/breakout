@@ -104,8 +104,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         if (currentBallPositionY > 570) {
 
             play = false;
-            ballVelocityX = 0;
-            ballVelocityY = 0;
+            
             g.setColor(Color.red);
             g.setFont(new Font("serif", Font.BOLD, 30));
             g.drawString("Game Over. Score: " + score, 190, 300);
