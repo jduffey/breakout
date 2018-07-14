@@ -239,12 +239,13 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         currentBallPositionX += ballVelocityX;
         currentBallPositionY += ballVelocityY;
 
-        if (currentBallPositionX < LEFTMOST_ALLOWED_BALL_X_POS) {
+        boolean ballIsLeftOfPlayZone = currentBallPositionX < LEFTMOST_ALLOWED_BALL_X_POS;
+        boolean ballIsRightOfPlayZone = currentBallPositionX > RIGHTMOST_ALLOWED_BALL_X_POS;
+
+        if (ballIsLeftOfPlayZone || ballIsRightOfPlayZone) {
             ballVelocityX = reverseBallVelocity(ballVelocityX);
         }
-        if (currentBallPositionX > RIGHTMOST_ALLOWED_BALL_X_POS) {
-            ballVelocityX = reverseBallVelocity(ballVelocityX);
-        }
+
         if (currentBallPositionY < TOPMOST_ALLOWED_BALL_Y_POS) {
             ballVelocityY = reverseBallVelocity(ballVelocityY);
         }
