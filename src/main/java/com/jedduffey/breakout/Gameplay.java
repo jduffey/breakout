@@ -212,10 +212,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     }
 
+    // Not used in this program
     @Override
     public void keyTyped(KeyEvent e) {
     }
 
+    // Not used in this program
     @Override
     public void keyReleased(KeyEvent e) {
     }
