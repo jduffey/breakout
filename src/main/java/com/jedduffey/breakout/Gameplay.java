@@ -36,7 +36,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     // Set initial play state, score, and remaining bricks
     private boolean play = false;
     private int score = INITIAL_SCORE;
-    private int bricksRemaining = 0;
+    private int bricksRemaining;
 
     // Declare Timer and delay value
     private Timer timer;
@@ -55,6 +55,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     public Gameplay() {
 
         map = new BrickMapGenerator(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
+        bricksRemaining = INITIAL_BRICKMAP_ROWS * INITIAL_BRICKMAP_COLUMNS;
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
