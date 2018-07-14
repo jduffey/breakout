@@ -31,11 +31,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     public static final int PADDLE_HEIGHT = 8; // Tutorial value is 8
     public static final int BALL_WIDTH = 20; // Tutorial value is 20
     public static final int BALL_HEIGHT = 20; // Tutorial value is 20
+    public static final int BOTTOMMOST_ALLOWED_BALL_POSITION_Y = 570; // Tutorial value is 570
 
     // Set initial play state, score, and remaining bricks
     private boolean play = false;
     private int score = INITIAL_SCORE;
-    private int bricksRemaining = INITIAL_BRICKS_REMAINING;
+    private int bricksRemaining = 0;
 
     // Declare Timer and delay value
     private Timer timer;
@@ -101,7 +102,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             g.drawString("Press Enter to restart ", 230, 350);
         }
 
-        if (currentBallPositionY > 570) {
+        if (currentBallPositionY > BOTTOMMOST_ALLOWED_BALL_POSITION_Y) {
 
             play = false;
 
