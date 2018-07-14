@@ -199,22 +199,23 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             A:
             for (int i = 0; i < gameBrickMap.brickMapArray.length; i++) {
                 for (int j = 0; j < gameBrickMap.brickMapArray[0].length; j++) {
-                    if (gameBrickMap.brickMapArray[i][j] == true) {
+                    if (gameBrickMap.brickMapArray[i][j]) {
                         int brickX = j * gameBrickMap.brickWidth + 80;
                         int brickY = i * gameBrickMap.brickHeight + 50;
                         int brickWidth = gameBrickMap.brickWidth;
                         int brickHeight = gameBrickMap.brickHeight;
 
-                        Rectangle rect = new Rectangle(brickX, brickY, brickWidth, brickHeight);
-                        Rectangle ballRect = new Rectangle(currentBallPositionX, currentBallPositionY, BALL_WIDTH, BALL_HEIGHT);
-                        Rectangle brickRect = rect;
+                        Rectangle brickRectangle = new Rectangle(brickX, brickY, brickWidth, brickHeight);
+                        Rectangle ballRectangle = new Rectangle(currentBallPositionX, currentBallPositionY, BALL_WIDTH, BALL_HEIGHT);
 
-                        if (ballRect.intersects(brickRect)) {
-                            gameBrickMap.setBrickValue(false, i, j);
+                        if (ballRectangle.intersects(brickRectangle)) {
+
+                            gameBrickMap.setBrickValueToFalse(i, j);
+
                             bricksRemaining--;
                             currentScore += SCORE_PER_BRICK_DESTROYED;
 
-                            if (currentBallPositionX + 19 <= brickRect.x || currentBallPositionX + 1 >= brickRect.x + brickRect.width) {
+                            if (currentBallPositionX + 19 <= brickRectangle.x || currentBallPositionX + 1 >= brickRectangle.x + brickRectangle.width) {
                                 ballVelocityX = -ballVelocityX;
                             } else {
                                 ballVelocityY = -ballVelocityY;

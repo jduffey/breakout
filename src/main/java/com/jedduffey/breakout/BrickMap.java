@@ -31,7 +31,7 @@ class BrickMap {
 
         for (int i = 0; i < brickMapArray.length; i++) {
             for (int j = 0; j < brickMapArray[0].length; j++) {
-                if (brickMapArray[i][j] == true) {
+                if (brickMapArray[i][j]) {
                     g.setColor(Color.white);
                     g.fillRect(j * brickWidth + 80, i * brickHeight + 50, brickWidth, brickHeight);
 
@@ -43,8 +43,8 @@ class BrickMap {
         }
     }
 
-    void setBrickValue(boolean value, int row, int col) {
-        brickMapArray[row][col] = value;
+    void setBrickValueToFalse(int row, int col) {
+        brickMapArray[row][col] = false;
     }
 
 }
