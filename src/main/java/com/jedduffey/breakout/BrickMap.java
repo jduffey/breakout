@@ -2,13 +2,13 @@ package com.jedduffey.breakout;
 
 import java.awt.*;
 
-public class BrickMapGenerator {
+public class BrickMap {
 
     public boolean brickMapArray[][];
     public int brickWidth;
     public int brickHeight;
 
-    public BrickMapGenerator(int row, int col) {
+    public BrickMap(int row, int col) {
 
         brickMapArray = new boolean[row][col];
 

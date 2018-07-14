@@ -50,12 +50,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private int ballVelocityX = INITIAL_BALL_X_VELOCITY;
     private int ballVelocityY = INITIAL_BALL_Y_VELOCITY;
 
-    // Initialize BrickMapGenerator
-    private BrickMapGenerator gameBrickMap;
+    // Initialize BrickMap
+    private BrickMap gameBrickMap;
 
     public Gameplay() {
 
-        gameBrickMap = new BrickMapGenerator(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
+        gameBrickMap = new BrickMap(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
         setBricksRemaining(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
         addKeyListener(this);
         setFocusable(true);
@@ -174,7 +174,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         currentPlayerPositionX = INITIAL_PLAYER_X_POS;
         score = INITIAL_SCORE;
         bricksRemaining = INITIAL_BRICKS_REMAINING;
-        gameBrickMap = new BrickMapGenerator(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
+        gameBrickMap = new BrickMap(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
 
         repaint();
     }
