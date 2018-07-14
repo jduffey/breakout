@@ -15,7 +15,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     public static final int INITIAL_BALL_X_POSITION = 120; // Tutorial value is 120
     public static final int INITIAL_BALL_Y_POSITION = 350; // Tutorial value is 350
     public static final int INITIAL_PLAYER_X_POS = 310; // Tutorial value is 310
-    public static final int INITIAL_BRICKS_REMAINING = 21; // Tutorial value is 21
     public static final int TIMER_DELAY_VALUE = 8; // Tutorial value is 8
     public static final int INITIAL_SCORE = 0; // Tutorial value is 0
     public static final int MAX_PLAYER_RIGHT_X_POS = 600; // Tutorial value is 600
@@ -34,28 +33,27 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     public static final int BOTTOMMOST_ALLOWED_BALL_POSITION_Y = 570; // Tutorial value is 570
     public static final int SCORE_PER_BRICK_DESTROYED = 5;
 
-    // Set initial play state, score, and remaining bricks
-    private boolean play = false;
-    private int score = INITIAL_SCORE;
+    // Play state, score, and remaining bricks
+    private boolean play;
+    private int score;
     private int bricksRemaining;
 
     // Declare Timer
     private Timer timer;
 
     // Set initial player and ball positions, and ball velocities
-    private int currentPlayerPositionX = INITIAL_PLAYER_X_POS;
-    private int currentBallPositionX = INITIAL_BALL_X_POSITION;
-    private int currentBallPositionY = INITIAL_BALL_Y_POSITION;
-    private int ballVelocityX = INITIAL_BALL_X_VELOCITY;
-    private int ballVelocityY = INITIAL_BALL_Y_VELOCITY;
+    private int currentPlayerPositionX;
+    private int currentBallPositionX;
+    private int currentBallPositionY;
+    private int ballVelocityX;
+    private int ballVelocityY;
 
     // Initialize BrickMap
     private BrickMap gameBrickMap;
 
     public Gameplay() {
 
-        gameBrickMap = new BrickMap(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
-        setBricksRemaining(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
+        prepareNewGame();
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
@@ -159,22 +157,22 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         }
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
             if (!play) {
-                resetGame();
+                prepareNewGame();
+                play = true;
             }
         }
     }
 
-    private void resetGame() {
-        play = true;
+    private void prepareNewGame() {
+        play = false;
         currentBallPositionX = INITIAL_BALL_X_POSITION;
         currentBallPositionY = INITIAL_BALL_Y_POSITION;
         ballVelocityX = INITIAL_BALL_X_VELOCITY;
         ballVelocityY = INITIAL_BALL_Y_VELOCITY;
         currentPlayerPositionX = INITIAL_PLAYER_X_POS;
         score = INITIAL_SCORE;
-        bricksRemaining = INITIAL_BRICKS_REMAINING;
+        bricksRemaining = INITIAL_BRICKMAP_ROWS * INITIAL_BRICKMAP_COLUMNS;
         gameBrickMap = new BrickMap(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
-
         repaint();
     }
 
