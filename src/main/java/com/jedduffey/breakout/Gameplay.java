@@ -25,6 +25,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     public static final int TOPMOST_ALLOWED_BALL_Y_POS = 0; // Tutorial value is 0
     public static final int INITIAL_BRICKMAP_ROWS = 3; // Tutorial value is 3
     public static final int INITIAL_BRICKMAP_COLUMNS = 7; // Tutorial value is 7
+    public static final int PLAYER_X_MOVEMENT_PER_CLICK = 20; // Tutorial value is 20
 
     // Set initial play state, score, and remaining bricks
     private boolean play = false;
@@ -150,12 +151,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     private void moveRight() {
         play = true;
-        currentPlayerPositionX += 20;
+        currentPlayerPositionX += PLAYER_X_MOVEMENT_PER_CLICK;
     }
 
     private void moveLeft() {
         play = true;
-        currentPlayerPositionX -= 20;
+        currentPlayerPositionX -= PLAYER_X_MOVEMENT_PER_CLICK;
     }
 
     @Override
