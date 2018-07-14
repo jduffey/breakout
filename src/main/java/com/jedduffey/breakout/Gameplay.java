@@ -82,20 +82,18 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         if (bricksRemaining <= 0) {
 
             playState = false;
+            displayAskToRestartMessage(g);
 
             displayWinningMessage(g);
-
-            displayAskToRestartMessage(g);
         }
 
         // If ball falls below playState zone
         if (currentBallPositionY > BOTTOMMOST_ALLOWED_BALL_Y_POS) {
 
             playState = false;
+            displayAskToRestartMessage(g);
 
             displayGameOverMessage(g);
-
-            displayAskToRestartMessage(g);
         }
 
         g.dispose();
@@ -107,7 +105,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         g.setColor(Color.black);
         g.fillRect(1, 1, 692, 592);
 
-        // Bricks
+        // Tell the BrickMap instance to draw its bricks
         gameBrickMap.draw((Graphics2D) g);
 
         // Borders
@@ -138,8 +136,9 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private void displayGameOverMessage(Graphics g) {
         g.setColor(Color.red);
         g.setFont(new Font("serif", Font.BOLD, 30));
+        int highestPossibleScore = INITIAL_BRICKMAP_ROWS * INITIAL_BRICKMAP_COLUMNS * SCORE_PER_BRICK_DESTROYED;
         g.drawString("Game Over. Score: " + currentScore + " / " +
-                INITIAL_BRICKMAP_ROWS * INITIAL_BRICKMAP_COLUMNS * SCORE_PER_BRICK_DESTROYED, 190, 300);
+                highestPossibleScore, 190, 300);
     }
 
     private void displayWinningMessage(Graphics g) {
