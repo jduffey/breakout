@@ -18,6 +18,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     public static final int INITIAL_BRICKS_REMAINING = 21; // Tutorial value is 21
     public static final int TIMER_DELAY_VALUE = 8; // Tutorial value is 8
     public static final int INITIAL_SCORE = 0; // Tutorial value is 0
+    public static final int MAX_PLAYER_RIGHT_Y_POS = 600; // Tutorial value is 600
+    public static final int MIN_PLAYER_LEFT_Y_POS = 10; // Tutorial value is 10
 
     // Set initial play state, score, and remaining bricks
     private boolean play = false;
@@ -108,15 +110,15 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            if (playerX >= 600) {
-                playerX = 600;
+            if (playerX >= MAX_PLAYER_RIGHT_Y_POS) {
+                playerX = MAX_PLAYER_RIGHT_Y_POS;
             } else {
                 moveRight();
             }
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            if (playerX < 10) {
-                playerX = 10;
+            if (playerX < MIN_PLAYER_LEFT_Y_POS) {
+                playerX = MIN_PLAYER_LEFT_Y_POS;
             } else {
                 moveLeft();
             }
@@ -130,13 +132,13 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     private void resetGame() {
         play = true;
-        ballPosX = 120;
-        ballPosY = 350;
-        ballXDir = -1;
-        ballYDir = -2;
-        playerX = 310;
-        score = 0;
-        totalBricks = 21;
+        ballPosX = INITIAL_BALL_X_POSITION;
+        ballPosY = INITIAL_BALL_Y_POSITION;
+        ballXDir = INITIAL_BALL_X_VELOCITY;
+        ballYDir = INITIAL_BALL_Y_VELOCITY;
+        playerX = INITIAL_PLAYER_X_POS;
+        score = INITIAL_SCORE;
+        totalBricks = INITIAL_BRICKS_REMAINING;
         map = new BrickMapGenerator(3, 7);
 
         repaint();
