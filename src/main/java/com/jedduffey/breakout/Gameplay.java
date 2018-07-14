@@ -126,6 +126,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         // Ball
         g.setColor(Color.yellow);
         g.fillOval(currentBallPositionX, currentBallPositionY, BALL_WIDTH, BALL_HEIGHT);
+
+        // Positions
+        g.setColor(Color.white);
+        g.setFont(new Font("serif", Font.BOLD, 10));
+        g.drawString("PaddleX: " + currentPlayerPositionX + ", BallX: " + currentBallPositionX + ", BallY: " + currentBallPositionY, 10, 560);
     }
 
     private void displayAskToRestartMessage(Graphics g) {
