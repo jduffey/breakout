@@ -100,28 +100,40 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
             play = false;
 
-            g.setColor(Color.red);
-            g.setFont(new Font("serif", Font.BOLD, 30));
-            g.drawString("You Win! Score: " + score, 190, 300);
+            displayWinningMessage(g);
 
-            g.setFont(new Font("serif", Font.BOLD, 20));
-            g.drawString("Press Enter to restart ", 230, 350);
+            displayAskToRestartMessage(g);
         }
 
+        // If ball falls below play zone
         if (currentBallPositionY > BOTTOMMOST_ALLOWED_BALL_POSITION_Y) {
 
             play = false;
 
-            g.setColor(Color.red);
-            g.setFont(new Font("serif", Font.BOLD, 30));
-            g.drawString("Game Over. Score: " + score, 190, 300);
+            displayGameOverMessage(g);
 
-            g.setFont(new Font("serif", Font.BOLD, 20));
-            g.drawString("Press Enter to restart ", 230, 350);
+            displayAskToRestartMessage(g);
         }
 
         g.dispose();
 
+    }
+
+    private void displayAskToRestartMessage(Graphics g) {
+        g.setFont(new Font("serif", Font.BOLD, 20));
+        g.drawString("Press Enter to restart ", 230, 350);
+    }
+
+    private void displayGameOverMessage(Graphics g) {
+        g.setColor(Color.red);
+        g.setFont(new Font("serif", Font.BOLD, 30));
+        g.drawString("Game Over. Score: " + score, 190, 300);
+    }
+
+    private void displayWinningMessage(Graphics g) {
+        g.setColor(Color.red);
+        g.setFont(new Font("serif", Font.BOLD, 30));
+        g.drawString("You Win! Score: " + score, 190, 300);
     }
 
     @Override
