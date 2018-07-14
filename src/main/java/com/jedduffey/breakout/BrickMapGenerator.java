@@ -4,17 +4,17 @@ import java.awt.*;
 
 public class BrickMapGenerator {
 
-    public int brickMap[][];
+    public boolean brickMap[][];
     public int brickWidth;
     public int brickHeight;
 
     public BrickMapGenerator(int row, int col) {
 
-        brickMap = new int[row][col];
+        brickMap = new boolean[row][col];
 
         for (int i = 0; i < brickMap.length; i++) {
             for (int j = 0; j < brickMap[0].length; j++) {
-                brickMap[i][j] = 1;
+                brickMap[i][j] = true;
             }
         }
 
@@ -26,7 +26,7 @@ public class BrickMapGenerator {
 
         for (int i = 0; i < brickMap.length; i++) {
             for (int j = 0; j < brickMap[0].length; j++) {
-                if (brickMap[i][j] > 0) {
+                if (brickMap[i][j] == true) {
                     g.setColor(Color.white);
                     g.fillRect(j * brickWidth + 80, i * brickHeight + 50, brickWidth, brickHeight);
 
@@ -38,7 +38,7 @@ public class BrickMapGenerator {
         }
     }
 
-    public void setBrickValue(int value, int row, int col) {
+    public void setBrickValue(boolean value, int row, int col) {
         brickMap[row][col] = value;
     }
 

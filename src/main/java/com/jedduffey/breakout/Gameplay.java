@@ -205,7 +205,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             A:
             for (int i = 0; i < map.brickMap.length; i++) {
                 for (int j = 0; j < map.brickMap[0].length; j++) {
-                    if (map.brickMap[i][j] > 0) {
+                    if (map.brickMap[i][j] == true) {
                         int brickX = j * map.brickWidth + 80;
                         int brickY = i * map.brickHeight + 50;
                         int brickWidth = map.brickWidth;
@@ -216,7 +216,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                         Rectangle brickRect = rect;
 
                         if (ballRect.intersects(brickRect)) {
-                            map.setBrickValue(0, i, j);
+                            map.setBrickValue(false, i, j);
                             bricksRemaining--;
                             score += SCORE_PER_BRICK_DESTROYED;
 
