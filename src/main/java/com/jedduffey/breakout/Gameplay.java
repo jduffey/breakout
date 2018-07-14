@@ -13,16 +13,20 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     public static final int INITIAL_BALL_Y_VELOCITY = -2;
     public static final int INITIAL_BALL_X_POSITION = 120;
     public static final int INITIAL_BALL_Y_POSITION = 350;
+    public static final int INITIAL_PLAYER_X_POS = 310;
+    public static final int INITIAL_BRICKS_REMAINING = 21;
+    public static final int TIMER_DELAY_VALUE = 8;
+    public static final int INITIAL_SCORE = 0;
 
     private boolean play = false;
-    private int score = 0;
+    private int score = INITIAL_SCORE;
 
-    private int totalBricks = 21;
+    private int totalBricks = INITIAL_BRICKS_REMAINING;
 
     private Timer timer;
-    private int delay = 8;
+    private int delay = TIMER_DELAY_VALUE;
 
-    private int playerX = 310;
+    private int playerX = INITIAL_PLAYER_X_POS;
 
     private int ballPosX = INITIAL_BALL_X_POSITION;
     private int ballPosY = INITIAL_BALL_Y_POSITION;
