@@ -52,12 +52,26 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     public Gameplay() {
 
-        prepareNewGame();
+        resetGameplayVariables();
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
         timer = new Timer(TIMER_DELAY_VALUE, this);
         timer.start();
+    }
+
+    private void resetGameplayVariables() {
+
+        playState = false;
+        currentBallPositionX = INITIAL_BALL_X_POS;
+        currentBallPositionY = INITIAL_BALL_Y_POS;
+        ballVelocityX = INITIAL_BALL_X_VEL;
+        ballVelocityY = INITIAL_BALL_Y_VEL;
+        currentPlayerPositionX = INITIAL_PLAYER_X_POS;
+        currentScore = INITIAL_SCORE;
+        bricksRemaining = INITIAL_BRICKMAP_ROWS * INITIAL_BRICKMAP_COLUMNS;
+        gameBrickMap = new BrickMap(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
+        repaint();
     }
 
     public void paint(Graphics g) {
@@ -152,24 +166,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         }
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
             if (!playState) {
-                prepareNewGame();
+                resetGameplayVariables();
                 playState = true;
             }
         }
     }
 
-    private void prepareNewGame() {
-        playState = false;
-        currentBallPositionX = INITIAL_BALL_X_POS;
-        currentBallPositionY = INITIAL_BALL_Y_POS;
-        ballVelocityX = INITIAL_BALL_X_VEL;
-        ballVelocityY = INITIAL_BALL_Y_VEL;
-        currentPlayerPositionX = INITIAL_PLAYER_X_POS;
-        currentScore = INITIAL_SCORE;
-        bricksRemaining = INITIAL_BRICKMAP_ROWS * INITIAL_BRICKMAP_COLUMNS;
-        gameBrickMap = new BrickMap(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
-        repaint();
-    }
 
     private void moveRight() {
         playState = true;
