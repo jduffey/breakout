@@ -9,14 +9,14 @@ import java.awt.event.KeyListener;
 
 public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
-    public static final int INITIAL_BALL_X_VELOCITY = -1;
-    public static final int INITIAL_BALL_Y_VELOCITY = -2;
-    public static final int INITIAL_BALL_X_POSITION = 120;
-    public static final int INITIAL_BALL_Y_POSITION = 350;
-    public static final int INITIAL_PLAYER_X_POS = 310;
-    public static final int INITIAL_BRICKS_REMAINING = 21;
-    public static final int TIMER_DELAY_VALUE = 8;
-    public static final int INITIAL_SCORE = 0;
+    public static final int INITIAL_BALL_X_VELOCITY = -1; // Tutorial value is -1
+    public static final int INITIAL_BALL_Y_VELOCITY = -2; // Tutorial value is -2
+    public static final int INITIAL_BALL_X_POSITION = 120; // Tutorial value is 120
+    public static final int INITIAL_BALL_Y_POSITION = 350; // Tutorial value is 350
+    public static final int INITIAL_PLAYER_X_POS = 310; // Tutorial value is 310
+    public static final int INITIAL_BRICKS_REMAINING = 21; // Tutorial value is 21
+    public static final int TIMER_DELAY_VALUE = 8; // Tutorial value is 8
+    public static final int INITIAL_SCORE = 0; // Tutorial value is 0
 
     private boolean play = false;
     private int score = INITIAL_SCORE;
