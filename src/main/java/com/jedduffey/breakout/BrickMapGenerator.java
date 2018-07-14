@@ -12,14 +12,19 @@ public class BrickMapGenerator {
 
         brickMapArray = new boolean[row][col];
 
-        for (int i = 0; i < brickMapArray.length; i++) {
-            for (int j = 0; j < brickMapArray[0].length; j++) {
-                brickMapArray[i][j] = true;
-            }
-        }
+        setAllBricksToTrue(brickMapArray);
 
         brickWidth = 540 / col;
         brickHeight = 150 / row;
+    }
+
+    private void setAllBricksToTrue(boolean map[][]) {
+
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[0].length; j++) {
+                map[i][j] = true;
+            }
+        }
     }
 
     public void draw(Graphics2D g) {
