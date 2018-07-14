@@ -97,6 +97,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         // Once all bricks have been destroyed
         if (bricksRemaining <= 0) {
+
             play = false;
 
             g.setColor(Color.red);
