@@ -129,6 +129,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     }
 
     private void displayAskToRestartMessage(Graphics g) {
+        g.setColor(Color.red);
         g.setFont(new Font("serif", Font.BOLD, 20));
         g.drawString("Press Enter to restart ", 230, 350);
     }
