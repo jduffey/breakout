@@ -164,8 +164,9 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         if (play) {
 
+            // Detects collision of ball and paddle and reverses Y velocity if so
             if (new Rectangle(currentBallPositionX, currentBallPositionY, 20, 20).intersects(new Rectangle(playerX, 550, 100, 8))) {
-                ballVelocityY = -ballVelocityY;
+                ballVelocityY = reverseBallVelocity(ballVelocityY);
             }
 
             A:
