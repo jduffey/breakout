@@ -66,9 +66,9 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         // borders
         g.setColor(Color.yellow);
-        g.fillRect(0, 0, 3, 592);
-        g.fillRect(0, 0, 692, 3);
-        g.fillRect(691, 0, 3, 592);
+        g.fillRect(0, 0, 3, 592); // Left border
+        g.fillRect(0, 0, 692, 3); // Top border
+        g.fillRect(691, 0, 3, 592); // Right border
 
         // score
         g.setColor(Color.white);
