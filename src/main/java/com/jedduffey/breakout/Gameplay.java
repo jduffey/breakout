@@ -35,7 +35,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     // Set initial play state, score, and remaining bricks
     private boolean play = false;
     private int score = INITIAL_SCORE;
-    private int totalBricks = INITIAL_BRICKS_REMAINING;
+    private int bricksRemaining = INITIAL_BRICKS_REMAINING;
 
     // Declare Timer and delay value
     private Timer timer;
@@ -90,7 +90,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         g.fillOval(currentBallPositionX, currentBallPositionY, BALL_WIDTH, BALL_HEIGHT);
 
         // Once all bricks have been destroyed
-        if (totalBricks <= 0) {
+        if (bricksRemaining <= 0) {
             play = false;
 
             g.setColor(Color.red);
@@ -104,7 +104,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         if (currentBallPositionY > 570) {
 
             play = false;
-            
+
             g.setColor(Color.red);
             g.setFont(new Font("serif", Font.BOLD, 30));
             g.drawString("Game Over. Score: " + score, 190, 300);
@@ -148,7 +148,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         ballVelocityY = INITIAL_BALL_Y_VELOCITY;
         currentPlayerPositionX = INITIAL_PLAYER_X_POS;
         score = INITIAL_SCORE;
-        totalBricks = INITIAL_BRICKS_REMAINING;
+        bricksRemaining = INITIAL_BRICKS_REMAINING;
         map = new BrickMapGenerator(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
 
         repaint();
@@ -192,7 +192,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
                         if (ballRect.intersects(brickRect)) {
                             map.setBrickValue(0, i, j);
-                            totalBricks--;
+                            bricksRemaining--;
                             score += 5;
 
                             if (currentBallPositionX + 19 <= brickRect.x || currentBallPositionX + 1 >= brickRect.x + brickRect.width) {
