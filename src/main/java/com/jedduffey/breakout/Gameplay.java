@@ -69,6 +69,33 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     public void paint(Graphics g) {
 
+        drawActiveGameplayElements(g);
+
+        // Once all bricks have been destroyed
+        if (bricksRemaining <= 0) {
+
+            play = false;
+
+            displayWinningMessage(g);
+
+            displayAskToRestartMessage(g);
+        }
+
+        // If ball falls below play zone
+        if (currentBallPositionY > BOTTOMMOST_ALLOWED_BALL_POSITION_Y) {
+
+            play = false;
+
+            displayGameOverMessage(g);
+
+            displayAskToRestartMessage(g);
+        }
+
+        g.dispose();
+
+    }
+
+    private void drawActiveGameplayElements(Graphics g) {
         // Background
         g.setColor(Color.black);
         g.fillRect(1, 1, 692, 592);
@@ -94,29 +121,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         // Ball
         g.setColor(Color.yellow);
         g.fillOval(currentBallPositionX, currentBallPositionY, BALL_WIDTH, BALL_HEIGHT);
-
-        // Once all bricks have been destroyed
-        if (bricksRemaining <= 0) {
-
-            play = false;
-
-            displayWinningMessage(g);
-
-            displayAskToRestartMessage(g);
-        }
-
-        // If ball falls below play zone
-        if (currentBallPositionY > BOTTOMMOST_ALLOWED_BALL_POSITION_Y) {
-
-            play = false;
-
-            displayGameOverMessage(g);
-
-            displayAskToRestartMessage(g);
-        }
-
-        g.dispose();
-
     }
 
     private void displayAskToRestartMessage(Graphics g) {
