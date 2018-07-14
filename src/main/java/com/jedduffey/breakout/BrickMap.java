@@ -2,13 +2,13 @@ package com.jedduffey.breakout;
 
 import java.awt.*;
 
-public class BrickMap {
+class BrickMap {
 
-    public boolean brickMapArray[][];
-    public int brickWidth;
-    public int brickHeight;
+    boolean brickMapArray[][];
+    int brickWidth;
+    int brickHeight;
 
-    public BrickMap(int row, int col) {
+    BrickMap(int row, int col) {
 
         brickMapArray = new boolean[row][col];
 
@@ -27,7 +27,7 @@ public class BrickMap {
         }
     }
 
-    public void draw(Graphics2D g) {
+    void draw(Graphics2D g) {
 
         for (int i = 0; i < brickMapArray.length; i++) {
             for (int j = 0; j < brickMapArray[0].length; j++) {
@@ -43,7 +43,7 @@ public class BrickMap {
         }
     }
 
-    public void setBrickValue(boolean value, int row, int col) {
+    void setBrickValue(boolean value, int row, int col) {
         brickMapArray[row][col] = value;
     }
 
