@@ -20,9 +20,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     public static final int INITIAL_SCORE = 0; // Tutorial value is 0
     public static final int MAX_PLAYER_RIGHT_X_POS = 600; // Tutorial value is 600
     public static final int MIN_PLAYER_LEFT_X_POS = 10; // Tutorial value is 10
-    public static final int LEFTMOST_ALLOWED_BALL_X_POS = 0;
-    public static final int RIGHTMOST_ALLOWED_BALL_X_POS = 670;
-    public static final int TOPMOST_ALLOWED_BALL_Y_POS = 0;
+    public static final int LEFTMOST_ALLOWED_BALL_X_POS = 0; // Tutorial value is 0
+    public static final int RIGHTMOST_ALLOWED_BALL_X_POS = 670; // Tutorial value is 670
+    public static final int TOPMOST_ALLOWED_BALL_Y_POS = 0; // Tutorial value is 0
+    public static final int INITIAL_BRICKMAP_ROWS = 3; // Tutorial value is 3
+    public static final int INITIAL_BRICKMAP_COLUMNS = 7; // Tutorial value is 7
 
     // Set initial play state, score, and remaining bricks
     private boolean play = false;
@@ -45,8 +47,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     public Gameplay() {
 
-        // Tutorial value is 3 * 7
-        map = new BrickMapGenerator(3, 7);
+        map = new BrickMapGenerator(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
@@ -142,7 +143,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         currentPlayerPositionX = INITIAL_PLAYER_X_POS;
         score = INITIAL_SCORE;
         totalBricks = INITIAL_BRICKS_REMAINING;
-        map = new BrickMapGenerator(3, 7);
+        map = new BrickMapGenerator(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
 
         repaint();
     }
