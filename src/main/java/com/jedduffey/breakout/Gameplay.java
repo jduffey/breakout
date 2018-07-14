@@ -39,9 +39,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private int score = INITIAL_SCORE;
     private int bricksRemaining;
 
-    // Declare Timer and delay value
+    // Declare Timer
     private Timer timer;
-    private int delay = TIMER_DELAY_VALUE;
 
     // Set initial player and ball positions, and ball velocities
     private int currentPlayerPositionX = INITIAL_PLAYER_X_POS;
@@ -60,7 +59,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
-        timer = new Timer(delay, this);
+        timer = new Timer(TIMER_DELAY_VALUE, this);
         timer.start();
     }
 
