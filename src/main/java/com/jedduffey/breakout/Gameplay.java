@@ -26,6 +26,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     public static final int INITIAL_BRICKMAP_ROWS = 3; // Tutorial value is 3
     public static final int INITIAL_BRICKMAP_COLUMNS = 7; // Tutorial value is 7
     public static final int PLAYER_X_MOVEMENT_PER_CLICK = 20; // Tutorial value is 20
+    public static final int PADDLE_Y_POSITION = 550; // Tutorial value is 550
+    public static final int PADDLE_WIDTH = 100; // Tutorial value is 100
+    public static final int PADDLE_HEIGHT = 8; // Tutorial value is 8
+    public static final int BALL_WIDTH = 20; // Tutorial value is 20
+    public static final int BALL_HEIGHT = 20; // Tutorial value is 20
 
     // Set initial play state, score, and remaining bricks
     private boolean play = false;
@@ -78,11 +83,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         // Paddle
         g.setColor(Color.green);
-        g.fillRect(currentPlayerPositionX, 550, 100, 8);
+        g.fillRect(currentPlayerPositionX, PADDLE_Y_POSITION, PADDLE_WIDTH, PADDLE_HEIGHT);
 
         // Ball
         g.setColor(Color.yellow);
-        g.fillOval(currentBallPositionX, currentBallPositionY, 20, 20);
+        g.fillOval(currentBallPositionX, currentBallPositionY, BALL_WIDTH, BALL_HEIGHT);
 
         // Once all bricks have been destroyed
         if (totalBricks <= 0) {
@@ -97,6 +102,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         }
 
         if (currentBallPositionY > 570) {
+
             play = false;
             ballVelocityX = 0;
             ballVelocityY = 0;
@@ -167,7 +173,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         if (play) {
 
             // Detects collision of ball and paddle and reverses Y velocity if so
-            if (new Rectangle(currentBallPositionX, currentBallPositionY, 20, 20).intersects(new Rectangle(currentPlayerPositionX, 550, 100, 8))) {
+            if (new Rectangle(currentBallPositionX, currentBallPositionY, BALL_WIDTH, BALL_HEIGHT)
+                    .intersects(new Rectangle(currentPlayerPositionX, PADDLE_Y_POSITION, PADDLE_WIDTH, PADDLE_HEIGHT))) {
                 ballVelocityY = reverseBallVelocity(ballVelocityY);
             }
 
@@ -181,7 +188,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                         int brickHeight = map.brickHeight;
 
                         Rectangle rect = new Rectangle(brickX, brickY, brickWidth, brickHeight);
-                        Rectangle ballRect = new Rectangle(currentBallPositionX, currentBallPositionY, 20, 20);
+                        Rectangle ballRect = new Rectangle(currentBallPositionX, currentBallPositionY, BALL_WIDTH, BALL_HEIGHT);
                         Rectangle brickRect = rect;
 
                         if (ballRect.intersects(brickRect)) {
