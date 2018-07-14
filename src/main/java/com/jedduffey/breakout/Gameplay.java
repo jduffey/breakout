@@ -132,7 +132,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private void displayGameOverMessage(Graphics g) {
         g.setColor(Color.red);
         g.setFont(new Font("serif", Font.BOLD, 30));
-        g.drawString("Game Over. Score: " + score + " / " + INITIAL_BRICKMAP_ROWS * INITIAL_BRICKMAP_COLUMNS * SCORE_PER_BRICK_DESTROYED, 190, 300);
+        g.drawString("Game Over. Score: " + score + " / " +
+                INITIAL_BRICKMAP_ROWS * INITIAL_BRICKMAP_COLUMNS * SCORE_PER_BRICK_DESTROYED, 190, 300);
     }
 
     private void displayWinningMessage(Graphics g) {
