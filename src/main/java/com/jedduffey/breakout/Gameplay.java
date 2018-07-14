@@ -18,11 +18,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     public static final int INITIAL_BRICKS_REMAINING = 21; // Tutorial value is 21
     public static final int TIMER_DELAY_VALUE = 8; // Tutorial value is 8
     public static final int INITIAL_SCORE = 0; // Tutorial value is 0
-    public static final int MAX_PLAYER_RIGHT_Y_POS = 600; // Tutorial value is 600
-    public static final int MIN_PLAYER_LEFT_Y_POS = 10; // Tutorial value is 10
+    public static final int MAX_PLAYER_RIGHT_X_POS = 600; // Tutorial value is 600
+    public static final int MIN_PLAYER_LEFT_X_POS = 10; // Tutorial value is 10
     public static final int LEFTMOST_ALLOWED_BALL_X_POS = 0;
-    public static final int TOPMOST_ALLOWED_BALL_Y_POS = 0;
     public static final int RIGHTMOST_ALLOWED_BALL_X_POS = 670;
+    public static final int TOPMOST_ALLOWED_BALL_Y_POS = 0;
 
     // Set initial play state, score, and remaining bricks
     private boolean play = false;
@@ -34,7 +34,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private int delay = TIMER_DELAY_VALUE;
 
     // Set initial player and ball positions, and ball velocities
-    private int playerX = INITIAL_PLAYER_X_POS;
+    private int currentPlayerPositionX = INITIAL_PLAYER_X_POS;
     private int currentBallPositionX = INITIAL_BALL_X_POSITION;
     private int currentBallPositionY = INITIAL_BALL_Y_POSITION;
     private int ballVelocityX = INITIAL_BALL_X_VELOCITY;
@@ -76,7 +76,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         // paddle
         g.setColor(Color.green);
-        g.fillRect(playerX, 550, 100, 8);
+        g.fillRect(currentPlayerPositionX, 550, 100, 8);
 
         // ball
         g.setColor(Color.yellow);
@@ -113,15 +113,15 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            if (playerX >= MAX_PLAYER_RIGHT_Y_POS) {
-                playerX = MAX_PLAYER_RIGHT_Y_POS;
+            if (currentPlayerPositionX >= MAX_PLAYER_RIGHT_X_POS) {
+                currentPlayerPositionX = MAX_PLAYER_RIGHT_X_POS;
             } else {
                 moveRight();
             }
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            if (playerX < MIN_PLAYER_LEFT_Y_POS) {
-                playerX = MIN_PLAYER_LEFT_Y_POS;
+            if (currentPlayerPositionX < MIN_PLAYER_LEFT_X_POS) {
+                currentPlayerPositionX = MIN_PLAYER_LEFT_X_POS;
             } else {
                 moveLeft();
             }
@@ -139,7 +139,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         currentBallPositionY = INITIAL_BALL_Y_POSITION;
         ballVelocityX = INITIAL_BALL_X_VELOCITY;
         ballVelocityY = INITIAL_BALL_Y_VELOCITY;
-        playerX = INITIAL_PLAYER_X_POS;
+        currentPlayerPositionX = INITIAL_PLAYER_X_POS;
         score = INITIAL_SCORE;
         totalBricks = INITIAL_BRICKS_REMAINING;
         map = new BrickMapGenerator(3, 7);
@@ -149,12 +149,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     private void moveRight() {
         play = true;
-        playerX += 20;
+        currentPlayerPositionX += 20;
     }
 
     private void moveLeft() {
         play = true;
-        playerX -= 20;
+        currentPlayerPositionX -= 20;
     }
 
     @Override
@@ -165,7 +165,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         if (play) {
 
             // Detects collision of ball and paddle and reverses Y velocity if so
-            if (new Rectangle(currentBallPositionX, currentBallPositionY, 20, 20).intersects(new Rectangle(playerX, 550, 100, 8))) {
+            if (new Rectangle(currentBallPositionX, currentBallPositionY, 20, 20).intersects(new Rectangle(currentPlayerPositionX, 550, 100, 8))) {
                 ballVelocityY = reverseBallVelocity(ballVelocityY);
             }
 
