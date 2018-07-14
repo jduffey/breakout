@@ -51,11 +51,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private int ballVelocityY = INITIAL_BALL_Y_VELOCITY;
 
     // Initialize BrickMapGenerator
-    private BrickMapGenerator map;
+    private BrickMapGenerator currentGameBrickMap;
 
     public Gameplay() {
 
-        map = new BrickMapGenerator(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
+        currentGameBrickMap = new BrickMapGenerator(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
         setBricksRemaining(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
         addKeyListener(this);
         setFocusable(true);
@@ -102,7 +102,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         g.fillRect(1, 1, 692, 592);
 
         // Bricks
-        map.draw((Graphics2D) g);
+        currentGameBrickMap.draw((Graphics2D) g);
 
         // Borders
         g.setColor(Color.yellow);
@@ -174,7 +174,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         currentPlayerPositionX = INITIAL_PLAYER_X_POS;
         score = INITIAL_SCORE;
         bricksRemaining = INITIAL_BRICKS_REMAINING;
-        map = new BrickMapGenerator(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
+        currentGameBrickMap = new BrickMapGenerator(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
 
         repaint();
     }
@@ -203,20 +203,20 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             }
 
             A:
-            for (int i = 0; i < map.brickMap.length; i++) {
-                for (int j = 0; j < map.brickMap[0].length; j++) {
-                    if (map.brickMap[i][j] == true) {
-                        int brickX = j * map.brickWidth + 80;
-                        int brickY = i * map.brickHeight + 50;
-                        int brickWidth = map.brickWidth;
-                        int brickHeight = map.brickHeight;
+            for (int i = 0; i < currentGameBrickMap.brickMap.length; i++) {
+                for (int j = 0; j < currentGameBrickMap.brickMap[0].length; j++) {
+                    if (currentGameBrickMap.brickMap[i][j] == true) {
+                        int brickX = j * currentGameBrickMap.brickWidth + 80;
+                        int brickY = i * currentGameBrickMap.brickHeight + 50;
+                        int brickWidth = currentGameBrickMap.brickWidth;
+                        int brickHeight = currentGameBrickMap.brickHeight;
 
                         Rectangle rect = new Rectangle(brickX, brickY, brickWidth, brickHeight);
                         Rectangle ballRect = new Rectangle(currentBallPositionX, currentBallPositionY, BALL_WIDTH, BALL_HEIGHT);
                         Rectangle brickRect = rect;
 
                         if (ballRect.intersects(brickRect)) {
-                            map.setBrickValue(false, i, j);
+                            currentGameBrickMap.setBrickValue(false, i, j);
                             bricksRemaining--;
                             score += SCORE_PER_BRICK_DESTROYED;
 
