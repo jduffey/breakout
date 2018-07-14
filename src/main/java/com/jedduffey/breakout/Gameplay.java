@@ -20,6 +20,9 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     public static final int INITIAL_SCORE = 0; // Tutorial value is 0
     public static final int MAX_PLAYER_RIGHT_Y_POS = 600; // Tutorial value is 600
     public static final int MIN_PLAYER_LEFT_Y_POS = 10; // Tutorial value is 10
+    public static final int LEFTMOST_ALLOWED_BALL_X_POS = 0;
+    public static final int TOPMOST_ALLOWED_BALL_Y_POS = 0;
+    public static final int RIGHTMOST_ALLOWED_BALL_X_POS = 670;
 
     // Set initial play state, score, and remaining bricks
     private boolean play = false;
@@ -32,10 +35,10 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     // Set initial player and ball positions, and ball velocities
     private int playerX = INITIAL_PLAYER_X_POS;
-    private int ballPosX = INITIAL_BALL_X_POSITION;
-    private int ballPosY = INITIAL_BALL_Y_POSITION;
-    private int ballXDir = INITIAL_BALL_X_VELOCITY;
-    private int ballYDir = INITIAL_BALL_Y_VELOCITY;
+    private int currentBallPositionX = INITIAL_BALL_X_POSITION;
+    private int currentBallPositionY = INITIAL_BALL_Y_POSITION;
+    private int ballVelocityX = INITIAL_BALL_X_VELOCITY;
+    private int ballVelocityY = INITIAL_BALL_Y_VELOCITY;
 
     // Initialize BrickMapGenerator
     private BrickMapGenerator map;
@@ -77,12 +80,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         // ball
         g.setColor(Color.yellow);
-        g.fillOval(ballPosX, ballPosY, 20, 20);
+        g.fillOval(currentBallPositionX, currentBallPositionY, 20, 20);
 
         if (totalBricks <= 0) {
             play = false;
-            ballXDir = 0;
-            ballYDir = 0;
+            ballVelocityX = 0;
+            ballVelocityY = 0;
             g.setColor(Color.red);
             g.setFont(new Font("serif", Font.BOLD, 30));
             g.drawString("You Win! Score: " + score, 190, 300);
@@ -91,10 +94,10 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             g.drawString("Press Enter to restart ", 230, 350);
         }
 
-        if (ballPosY > 570) {
+        if (currentBallPositionY > 570) {
             play = false;
-            ballXDir = 0;
-            ballYDir = 0;
+            ballVelocityX = 0;
+            ballVelocityY = 0;
             g.setColor(Color.red);
             g.setFont(new Font("serif", Font.BOLD, 30));
             g.drawString("Game Over. Score: " + score, 190, 300);
@@ -132,10 +135,10 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     private void resetGame() {
         play = true;
-        ballPosX = INITIAL_BALL_X_POSITION;
-        ballPosY = INITIAL_BALL_Y_POSITION;
-        ballXDir = INITIAL_BALL_X_VELOCITY;
-        ballYDir = INITIAL_BALL_Y_VELOCITY;
+        currentBallPositionX = INITIAL_BALL_X_POSITION;
+        currentBallPositionY = INITIAL_BALL_Y_POSITION;
+        ballVelocityX = INITIAL_BALL_X_VELOCITY;
+        ballVelocityY = INITIAL_BALL_Y_VELOCITY;
         playerX = INITIAL_PLAYER_X_POS;
         score = INITIAL_SCORE;
         totalBricks = INITIAL_BRICKS_REMAINING;
@@ -161,8 +164,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         if (play) {
 
-            if (new Rectangle(ballPosX, ballPosY, 20, 20).intersects(new Rectangle(playerX, 550, 100, 8))) {
-                ballYDir = -ballYDir;
+            if (new Rectangle(currentBallPositionX, currentBallPositionY, 20, 20).intersects(new Rectangle(playerX, 550, 100, 8))) {
+                ballVelocityY = -ballVelocityY;
             }
 
             A:
@@ -175,7 +178,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                         int brickHeight = map.brickHeight;
 
                         Rectangle rect = new Rectangle(brickX, brickY, brickWidth, brickHeight);
-                        Rectangle ballRect = new Rectangle(ballPosX, ballPosY, 20, 20);
+                        Rectangle ballRect = new Rectangle(currentBallPositionX, currentBallPositionY, 20, 20);
                         Rectangle brickRect = rect;
 
                         if (ballRect.intersects(brickRect)) {
@@ -183,10 +186,10 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                             totalBricks--;
                             score += 5;
 
-                            if (ballPosX + 19 <= brickRect.x || ballPosX + 1 >= brickRect.x + brickRect.width) {
-                                ballXDir = -ballXDir;
+                            if (currentBallPositionX + 19 <= brickRect.x || currentBallPositionX + 1 >= brickRect.x + brickRect.width) {
+                                ballVelocityX = -ballVelocityX;
                             } else {
-                                ballYDir = -ballYDir;
+                                ballVelocityY = -ballVelocityY;
                             }
 
                             break A;
@@ -195,21 +198,27 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 }
             }
 
-            ballPosX += ballXDir;
-            ballPosY += ballYDir;
-            if (ballPosX < 0) {
-                ballXDir = -ballXDir;
+            currentBallPositionX += ballVelocityX;
+            currentBallPositionY += ballVelocityY;
+
+            if (currentBallPositionX < LEFTMOST_ALLOWED_BALL_X_POS) {
+                ballVelocityX = reverseBallVelocity(ballVelocityX);
             }
-            if (ballPosY < 0) {
-                ballYDir = -ballYDir;
+            if (currentBallPositionX > RIGHTMOST_ALLOWED_BALL_X_POS) {
+                ballVelocityX = reverseBallVelocity(ballVelocityX);
             }
-            if (ballPosX > 670) {
-                ballXDir = -ballXDir;
+            if (currentBallPositionY < TOPMOST_ALLOWED_BALL_Y_POS) {
+                ballVelocityY = reverseBallVelocity(ballVelocityY);
             }
+
         }
 
         repaint();
 
+    }
+
+    private int reverseBallVelocity(int ballVelocity) {
+        return -ballVelocity;
     }
 
     // Not used in this program
