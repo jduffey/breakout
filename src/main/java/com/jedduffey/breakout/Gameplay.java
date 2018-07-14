@@ -80,7 +80,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         g.setColor(Color.green);
         g.fillRect(currentPlayerPositionX, 550, 100, 8);
 
-        // ball
+        // Ball
         g.setColor(Color.yellow);
         g.fillOval(currentBallPositionX, currentBallPositionY, 20, 20);
 
