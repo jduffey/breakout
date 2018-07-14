@@ -83,6 +83,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         g.setColor(Color.yellow);
         g.fillOval(currentBallPositionX, currentBallPositionY, 20, 20);
 
+        // Once all bricks have been destroyed
         if (totalBricks <= 0) {
             play = false;
             ballVelocityX = 0;
