@@ -32,6 +32,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     public static final int BALL_WIDTH = 20; // Tutorial value is 20
     public static final int BALL_HEIGHT = 20; // Tutorial value is 20
     public static final int BOTTOMMOST_ALLOWED_BALL_POSITION_Y = 570; // Tutorial value is 570
+    public static final int SCORE_PER_BRICK_DESTROYED = 5;
 
     // Set initial play state, score, and remaining bricks
     private boolean play = false;
@@ -131,7 +132,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private void displayGameOverMessage(Graphics g) {
         g.setColor(Color.red);
         g.setFont(new Font("serif", Font.BOLD, 30));
-        g.drawString("Game Over. Score: " + score, 190, 300);
+        g.drawString("Game Over. Score: " + score + " / " + INITIAL_BRICKMAP_ROWS * INITIAL_BRICKMAP_COLUMNS * SCORE_PER_BRICK_DESTROYED, 190, 300);
     }
 
     private void displayWinningMessage(Graphics g) {
@@ -216,7 +217,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                         if (ballRect.intersects(brickRect)) {
                             map.setBrickValue(0, i, j);
                             bricksRemaining--;
-                            score += 5;
+                            score += SCORE_PER_BRICK_DESTROYED;
 
                             if (currentBallPositionX + 19 <= brickRect.x || currentBallPositionX + 1 >= brickRect.x + brickRect.width) {
                                 ballVelocityX = -ballVelocityX;
