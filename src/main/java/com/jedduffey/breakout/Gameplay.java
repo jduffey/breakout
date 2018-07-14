@@ -172,7 +172,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         }
     }
 
-
     private void moveRight() {
         playState = true;
         currentPlayerPositionX += PLAYER_X_MOVEMENT_PER_CLICK;
@@ -236,6 +235,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     }
 
     private void ballMovementLogic() {
+
         currentBallPositionX += ballVelocityX;
         currentBallPositionY += ballVelocityY;
 
