@@ -20,7 +20,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private static final int INITIAL_SCORE = 0; // Tutorial value is 0
     private static final int INITIAL_BRICKMAP_ROWS = 3; // Tutorial value is 3
     private static final int INITIAL_BRICKMAP_COLUMNS = 7; // Tutorial value is 7
-    private static final int SCORE_PER_BRICK_DESTROYED = 5; // Tutorial value is 5
+    //private static final int SCORE_PER_BRICK_DESTROYED = 5; // Tutorial value is 5
     private static final int PADDLE_X_MOVEMENT_PER_CLICK = 20; // Tutorial value is 20
 
     private static final int PADDLE_Y_POS = 550; // Tutorial value is 550
@@ -158,9 +158,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private void displayGameOverMessage(Graphics g) {
         g.setColor(Color.red);
         g.setFont(new Font("serif", Font.BOLD, 30));
-        int highestPossibleScore = INITIAL_BRICKMAP_ROWS * INITIAL_BRICKMAP_COLUMNS * SCORE_PER_BRICK_DESTROYED;
-        g.drawString("Game Over! Score: " + currentScore + " / " +
-                highestPossibleScore, 190, 300);
+        //int highestPossibleScore = INITIAL_BRICKMAP_ROWS * INITIAL_BRICKMAP_COLUMNS * SCORE_PER_BRICK_DESTROYED;
+        g.drawString("Game Over! Score: " + currentScore, 190, 300);
     }
 
     private void displayWinningMessage(Graphics g) {
@@ -230,7 +229,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                         if (ballRectangle.intersects(brickRectangle)) {
 
                             bricksRemaining--;
-                            
+
                             currentScore += gameBrickMap.brickMapArray[i][j].pointValue;
 
                             gameBrickMap.setBrickValueToDead(i, j);
