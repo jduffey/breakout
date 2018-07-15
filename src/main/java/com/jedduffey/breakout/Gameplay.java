@@ -94,6 +94,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         if (allBricksHaveBeenDestroyed || ballFallsBelowPlayZone) {
             playState = false;
+            freezeBallMovement();
             displayAskToRestartMessage(g);
         }
 
@@ -106,6 +107,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         }
 
         g.dispose();
+    }
+
+    private void freezeBallMovement() {
+        ballVelocityX = 0;
+        ballVelocityY = 0;
     }
 
     private void drawActiveGameplayElements(Graphics g) {
