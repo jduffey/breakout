@@ -78,22 +78,20 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         drawActiveGameplayElements(g);
 
-        // Once all bricks have been destroyed
-        if (bricksRemaining <= 0) {
+        boolean allBricksHaveBeenDestroyed = bricksRemaining <= 0;
+        boolean ballFallsBelowPlayZone = currentBallPositionY > BOTTOMMOST_ALLOWED_BALL_Y_POS;
 
+        if (allBricksHaveBeenDestroyed || ballFallsBelowPlayZone) {
             playState = false;
             displayAskToRestartMessage(g);
-
-            displayWinningMessage(g);
         }
 
-        // If ball falls below playState zone
-        if (currentBallPositionY > BOTTOMMOST_ALLOWED_BALL_Y_POS) {
-
-            playState = false;
-            displayAskToRestartMessage(g);
-
+        if (ballFallsBelowPlayZone) {
             displayGameOverMessage(g);
+        }
+
+        if (allBricksHaveBeenDestroyed) {
+            displayWinningMessage(g);
         }
 
         g.dispose();
