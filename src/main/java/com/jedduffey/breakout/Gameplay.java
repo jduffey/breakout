@@ -275,6 +275,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     }
 
     private boolean ballHitsBrick(int i, int j, Rectangle brickRectangle, Rectangle ballRectangle) {
+
         if (ballRectangle.intersects(brickRectangle)) {
 
             if (gameBrickMap.brickMapArray[i][j] == BrickType.RED || gameBrickMap.brickMapArray[i][j] ==
