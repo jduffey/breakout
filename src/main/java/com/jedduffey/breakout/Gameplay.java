@@ -265,7 +265,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
                             currentScore += gameBrickMap.brickMapArray[i][j].pointValue;
 
-                            if (gameBrickMap.brickMapArray[i][j] == BrickType.RED || gameBrickMap.brickMapArray[i][j] == BrickType.ORANGE) {
+                            if (gameBrickMap.brickMapArray[i][j] == BrickType.RED || gameBrickMap.brickMapArray[i][j] ==
+                                    BrickType.ORANGE || gameBrickMap.brickMapArray[i][j] == BrickType.YELLOW) {
                                 this.paddleWidth += 20;
                             } else
                                 this.paddleWidth = INITIAL_PADDLE_WIDTH;
