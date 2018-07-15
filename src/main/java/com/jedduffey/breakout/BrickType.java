@@ -9,8 +9,8 @@ public enum BrickType {
     YELLOW(Color.YELLOW, 6),
     ORANGE(Color.ORANGE, 7),
     RED(Color.RED, 8),
-    GREEN(Color.GREEN,9),
-    BLUE(Color.CYAN,10);
+    GREEN(Color.GREEN, 9),
+    BLUE(Color.CYAN, 10);
 
     public Color color;
     public int pointValue;
