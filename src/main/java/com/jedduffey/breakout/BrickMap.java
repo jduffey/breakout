@@ -45,12 +45,16 @@ class BrickMap {
     void draw(Graphics2D g) {
 
         for (int i = 0; i < brickMapArray.length; i++) {
+
             for (int j = 0; j < brickMapArray[0].length; j++) {
+
                 if (brickMapArray[i][j]) {
+
                     if (specialBricksArray[i][j]) {
                         g.setColor(Color.yellow);
                     } else
                         g.setColor(Color.white);
+
                     g.fillRect(j * brickWidth + 80, i * brickHeight + 50, brickWidth, brickHeight);
 
                     g.setStroke(new BasicStroke(3));
