@@ -69,7 +69,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         if (Math.random() < 0.5) {
             ballVelocityX = INITIAL_BALL_X_VEL;
-        } else reverseBallVelocity(INITIAL_BALL_X_VEL);
+        } else ballVelocityX = reverseBallVelocity(INITIAL_BALL_X_VEL);
 
         ballVelocityY = INITIAL_BALL_Y_VEL;
         currentPaddlePositionX = INITIAL_PADDLE_X_POS;
