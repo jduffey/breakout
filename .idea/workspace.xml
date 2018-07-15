@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1e1f1ad-8831-4a3c-93b2-4a01a36d97c4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Gameplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Gameplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/jedduffey/breakout/BrickMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/jedduffey/breakout/BrickMap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/jedduffey/breakout/Gameplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/jedduffey/breakout/Gameplay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/BrickMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/BrickMap.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -21,7 +24,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
@@ -30,11 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gameplay.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Gameplay.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Gameplay.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1326">
-              <caret line="78" column="27" selection-start-line="78" selection-start-column="27" selection-end-line="78" selection-end-column="27" />
+            <state relative-caret-position="-1564">
+              <caret line="97" selection-start-line="97" selection-end-line="97" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#9692#9693#0" expanded="true" />
@@ -47,8 +50,12 @@
       <file leaf-file-name="BrickMap.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/BrickMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="511">
-              <caret line="46" column="39" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="39" />
+            <state relative-caret-position="238">
+              <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
+              <folding>
+                <element signature="e#1721#1722#0" expanded="true" />
+                <element signature="e#1768#1769#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -65,6 +72,9 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>public</find>
+      <find>PAL</find>
+      <find>player</find>
+      <find>PLAYER</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -369,8 +379,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/MapGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/BrickMapGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/BrickMap.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Gameplay.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/BrickMap.java" />
       </list>
     </option>
   </component>
@@ -571,6 +581,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="e#1721#1722#0" expanded="true" />
+            <element signature="e#1768#1769#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -638,10 +652,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Gameplay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1564">
+          <caret line="97" selection-start-line="97" selection-end-line="97" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#9692#9693#0" expanded="true" />
+            <element signature="e#9728#9729#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/BrickMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="46" column="39" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="39" />
+        <state relative-caret-position="238">
+          <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
+          <folding>
+            <element signature="e#1721#1722#0" expanded="true" />
+            <element signature="e#1768#1769#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -649,18 +679,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="29" lean-forward="true" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Gameplay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1326">
-          <caret line="78" column="27" selection-start-line="78" selection-start-column="27" selection-end-line="78" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#9692#9693#0" expanded="true" />
-            <element signature="e#9728#9729#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
