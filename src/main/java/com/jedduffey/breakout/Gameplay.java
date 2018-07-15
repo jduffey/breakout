@@ -141,11 +141,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         g.setColor(Color.WHITE);
         g.setFont(new Font("serif", Font.BOLD, 12));
         g.drawString("PaddleX: " + currentPaddlePositionX, 10, 570);
-        g.drawString("BallX: " + currentBallPositionX, 110, 570);
-        g.drawString("BallY: " + currentBallPositionY, 210, 570);
-        g.drawString("XVel: " + ballVelocityX, 310, 570);
-        g.drawString("YVel: " + ballVelocityY, 410, 570);
-        g.drawString("PaddleWidth: " + paddleWidth, 510, 570);
+        g.drawString("BallX: " + currentBallPositionX, 100, 570);
+        g.drawString("BallY: " + currentBallPositionY, 180, 570);
+        g.drawString("XVel: " + ballVelocityX, 300, 570);
+        g.drawString("YVel: " + ballVelocityY, 380, 570);
+        g.drawString("PaddleWidth: " + paddleWidth, 460, 570);
+        g.drawString("BricksRem: " + bricksRemaining, 560, 570);
     }
 
     private void drawBall(Graphics g) {
