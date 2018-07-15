@@ -165,7 +165,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     }
 
     private void drawBackground(Graphics g) {
-        g.setColor(Color.BLACK);
+        g.setColor(Color.LIGHT_GRAY);
         g.fillRect(1, 1, 692, 592);
     }
 
