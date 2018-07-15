@@ -4,7 +4,7 @@ import java.awt.*;
 
 public enum BrickType {
 
-    DEAD(Color.BLACK, 0),
+    DEAD(Gameplay.BACKGROUND_AND_DEAD_BRICK_COLOR, 0),
     WHITE(Color.WHITE, 5),
     YELLOW(Color.YELLOW, 6),
     ORANGE(Color.ORANGE, 7),
