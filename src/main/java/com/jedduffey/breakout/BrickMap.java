@@ -27,13 +27,15 @@ class BrickMap {
 
                 map[i][j] = BrickType.WHITE;
 
-                if (Math.random() < 0.2) {
+                double random = Math.random();
+
+                if (random < 0.5 && random >= 0.25) {
                     map[i][j] = BrickType.YELLOW;
                 }
-                if (Math.random() < 0.1) {
+                if (random < 0.25 && random >= 0.10) {
                     map[i][j] = BrickType.ORANGE;
                 }
-                if (Math.random() < 0.05) {
+                if (random < 0.10) {
                     map[i][j] = BrickType.RED;
                 }
             }

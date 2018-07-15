@@ -18,8 +18,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private static final int INITIAL_PADDLE_X_POS = 310; // Tutorial value is 310
 
     private static final int INITIAL_SCORE = 0; // Tutorial value is 0
-    private static final int INITIAL_BRICKMAP_ROWS = 3; // Tutorial value is 3
-    private static final int INITIAL_BRICKMAP_COLUMNS = 7; // Tutorial value is 7
+    private static final int INITIAL_BRICKMAP_ROWS = 6; // Tutorial value is 3
+    private static final int INITIAL_BRICKMAP_COLUMNS = 8; // Tutorial value is 7
     private static final int SCORE_PER_BRICK_DESTROYED = 5; // Tutorial value is 5
     private static final int PADDLE_X_MOVEMENT_PER_CLICK = 20; // Tutorial value is 20
 
