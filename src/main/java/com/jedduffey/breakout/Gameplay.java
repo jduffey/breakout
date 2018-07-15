@@ -15,17 +15,17 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private static final int INITIAL_BALL_Y_VEL = -2; // Tutorial value is -2
     private static final int INITIAL_BALL_X_POS = 120; // Tutorial value is 120
     private static final int INITIAL_BALL_Y_POS = 350; // Tutorial value is 350
-    private static final int INITIAL_PLAYER_X_POS = 310; // Tutorial value is 310
+    private static final int INITIAL_PADDLE_X_POS = 310; // Tutorial value is 310
 
     private static final int INITIAL_SCORE = 0; // Tutorial value is 0
     private static final int INITIAL_BRICKMAP_ROWS = 3; // Tutorial value is 3
     private static final int INITIAL_BRICKMAP_COLUMNS = 7; // Tutorial value is 7
     private static final int SCORE_PER_BRICK_DESTROYED = 5; // Tutorial value is 5
-    private static final int PLAYER_X_MOVEMENT_PER_CLICK = 20; // Tutorial value is 20
+    private static final int PADDLE_X_MOVEMENT_PER_CLICK = 20; // Tutorial value is 20
 
     private static final int PADDLE_Y_POS = 550; // Tutorial value is 550
-    private static final int MIN_PLAYER_LEFT_X_POS = 10; // Tutorial value is 10
-    private static final int MAX_PLAYER_RIGHT_X_POS = 600; // Tutorial value is 600
+    private static final int MIN_PADDLE_LEFT_X_POS = 10; // Tutorial value is 10
+    private static final int MAX_PADDLE_RIGHT_X_POS = 600; // Tutorial value is 600
     private static final int LEFTMOST_ALLOWED_BALL_X_POS = 0; // Tutorial value is 0
     private static final int RIGHTMOST_ALLOWED_BALL_X_POS = 670; // Tutorial value is 670
     private static final int TOPMOST_ALLOWED_BALL_Y_POS = 0; // Tutorial value is 0
@@ -42,7 +42,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     private Timer timer;
 
-    private int currentPlayerPositionX;
+    private int currentPaddlePositionX;
     private int currentBallPositionX;
     private int currentBallPositionY;
     private int ballVelocityX;
@@ -67,7 +67,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         currentBallPositionY = INITIAL_BALL_Y_POS;
         ballVelocityX = INITIAL_BALL_X_VEL;
         ballVelocityY = INITIAL_BALL_Y_VEL;
-        currentPlayerPositionX = INITIAL_PLAYER_X_POS;
+        currentPaddlePositionX = INITIAL_PADDLE_X_POS;
         currentScore = INITIAL_SCORE;
         bricksRemaining = INITIAL_BRICKMAP_ROWS * INITIAL_BRICKMAP_COLUMNS;
         gameBrickMap = new BrickMap(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
@@ -118,7 +118,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private void drawPositionCounters(Graphics g) {
         g.setColor(Color.white);
         g.setFont(new Font("serif", Font.BOLD, 12));
-        g.drawString("PaddleX: " + currentPlayerPositionX + "      BallX: " +
+        g.drawString("PaddleX: " + currentPaddlePositionX + "      BallX: " +
                 currentBallPositionX + "      BallY: " + currentBallPositionY, 10, 570);
     }
 
@@ -129,7 +129,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     private void drawPaddle(Graphics g) {
         g.setColor(Color.green);
-        g.fillRect(currentPlayerPositionX, PADDLE_Y_POS, PADDLE_WIDTH, PADDLE_HEIGHT);
+        g.fillRect(currentPaddlePositionX, PADDLE_Y_POS, PADDLE_WIDTH, PADDLE_HEIGHT);
     }
 
     private void drawScore(Graphics g) {
@@ -173,15 +173,15 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            if (currentPlayerPositionX >= MAX_PLAYER_RIGHT_X_POS) {
-                currentPlayerPositionX = MAX_PLAYER_RIGHT_X_POS;
+            if (currentPaddlePositionX >= MAX_PADDLE_RIGHT_X_POS) {
+                currentPaddlePositionX = MAX_PADDLE_RIGHT_X_POS;
             } else {
                 moveRight();
             }
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            if (currentPlayerPositionX < MIN_PLAYER_LEFT_X_POS) {
-                currentPlayerPositionX = MIN_PLAYER_LEFT_X_POS;
+            if (currentPaddlePositionX < MIN_PADDLE_LEFT_X_POS) {
+                currentPaddlePositionX = MIN_PADDLE_LEFT_X_POS;
             } else {
                 moveLeft();
             }
@@ -196,12 +196,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     private void moveRight() {
         playState = true;
-        currentPlayerPositionX += PLAYER_X_MOVEMENT_PER_CLICK;
+        currentPaddlePositionX += PADDLE_X_MOVEMENT_PER_CLICK;
     }
 
     private void moveLeft() {
         playState = true;
-        currentPlayerPositionX -= PLAYER_X_MOVEMENT_PER_CLICK;
+        currentPaddlePositionX -= PADDLE_X_MOVEMENT_PER_CLICK;
     }
 
     @Override
@@ -213,7 +213,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
             // Detects collision of ball and paddle and reverses Y velocity if so
             if (new Rectangle(currentBallPositionX, currentBallPositionY, BALL_WIDTH, BALL_HEIGHT)
-                    .intersects(new Rectangle(currentPlayerPositionX, PADDLE_Y_POS, PADDLE_WIDTH, PADDLE_HEIGHT))) {
+                    .intersects(new Rectangle(currentPaddlePositionX, PADDLE_Y_POS, PADDLE_WIDTH, PADDLE_HEIGHT))) {
                 ballVelocityY = reverseBallVelocity(ballVelocityY);
             }
 
