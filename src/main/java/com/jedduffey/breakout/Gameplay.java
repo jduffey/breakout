@@ -95,9 +95,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         drawActiveGameplayElements(g);
 
-        // Well this works...
-        //paddleWidth++;
-
         boolean allBricksHaveBeenDestroyed = bricksRemaining <= 0;
         boolean ballFallsBelowPlayZone = currentBallPositionY > BOTTOMMOST_ALLOWED_BALL_Y_POS;
 
@@ -191,7 +188,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private void displayGameOverMessage(Graphics g) {
         g.setColor(Color.RED);
         g.setFont(new Font("serif", Font.BOLD, 30));
-        //int highestPossibleScore = INITIAL_BRICKMAP_ROWS * INITIAL_BRICKMAP_COLUMNS * SCORE_PER_BRICK_DESTROYED;
         g.drawString("Game Over! Score: " + currentScore, 190, 300);
     }
 
@@ -203,6 +199,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             if (currentPaddlePositionX + paddleWidth >= MAX_PADDLE_RIGHT_X_POS) {
                 currentPaddlePositionX = MAX_PADDLE_RIGHT_X_POS - paddleWidth;
@@ -210,6 +207,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 moveRight();
             }
         }
+
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             if (currentPaddlePositionX <= MIN_PADDLE_LEFT_X_POS) {
                 currentPaddlePositionX = MIN_PADDLE_LEFT_X_POS;
@@ -217,6 +215,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 moveLeft();
             }
         }
+
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
             if (!playState) {
                 resetGameplayVariables();
@@ -276,6 +275,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                             } else {
                                 ballVelocityY = -ballVelocityY;
                             }
+
                             gameBrickMap.setBrickValueToDead(i, j);
 
                             break A;
@@ -293,6 +293,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     }
 
     private void logicIfBallCollidesWithPaddle() {
+
         if (new Rectangle(currentBallPositionX, currentBallPositionY, BALL_WIDTH, BALL_HEIGHT)
                 .intersects(new Rectangle(currentPaddlePositionX, PADDLE_Y_POS, paddleWidth, PADDLE_HEIGHT))) {
             ballVelocityY = reverseBallVelocity(ballVelocityY);

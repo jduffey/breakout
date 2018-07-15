@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1e1f1ad-8831-4a3c-93b2-4a01a36d97c4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/BrickType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/BrickType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Gameplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Gameplay.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -21,20 +21,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+            <state relative-caret-position="374">
+              <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gameplay.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Gameplay.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Gameplay.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="271" selection-start-line="271" selection-end-line="271" />
+            <state relative-caret-position="-67">
+              <caret line="296" column="8" selection-start-line="296" selection-start-column="8" selection-end-line="296" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#10906#10907#0" expanded="true" />
@@ -47,7 +47,7 @@
       <file leaf-file-name="BrickMap.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/BrickMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="51">
               <caret line="33" selection-start-line="33" selection-end-line="33" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -388,9 +388,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/MapGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/BrickMapGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Gameplay.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/BrickMap.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/BrickType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Gameplay.java" />
       </list>
     </option>
   </component>
@@ -665,24 +665,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/BrickMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="51">
           <caret line="33" selection-start-line="33" selection-end-line="33" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2222#2223#0" expanded="true" />
             <element signature="e#2278#2279#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Gameplay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="271" selection-start-line="271" selection-end-line="271" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#10906#10907#0" expanded="true" />
-            <element signature="e#10942#10943#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -696,8 +684,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+        <state relative-caret-position="374">
+          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Gameplay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-67">
+          <caret line="296" column="8" selection-start-line="296" selection-start-column="8" selection-end-line="296" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#10906#10907#0" expanded="true" />
+            <element signature="e#10942#10943#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
