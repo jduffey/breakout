@@ -275,9 +275,9 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                             if (gameBrickMap.brickMapArray[i][j] == BrickType.GREEN || gameBrickMap.brickMapArray[i][j] == BrickType.BLUE) {
                                 gameBrickMap.brickMapArray[i][j] = BrickType.WHITE;
                             } else{
-                                gameBrickMap.setBrickValueToDead(i, j);
-                                bricksRemaining--;
                                 currentScore += gameBrickMap.brickMapArray[i][j].pointValue;
+                                bricksRemaining--;
+                                gameBrickMap.setBrickValueToDead(i, j);
                             }
 
                             break A;
