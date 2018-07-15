@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e1e1f1ad-8831-4a3c-93b2-4a01a36d97c4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Gameplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Gameplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="e1e1f1ad-8831-4a3c-93b2-4a01a36d97c4" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -35,8 +31,8 @@
       <file leaf-file-name="Gameplay.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Gameplay.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="78" column="10" selection-start-line="78" selection-start-column="10" selection-end-line="78" selection-end-column="10" />
+            <state relative-caret-position="768">
+              <caret line="183" column="114" selection-start-line="183" selection-start-column="8" selection-end-line="183" selection-end-column="114" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#9948#9949#0" expanded="true" />
@@ -85,6 +81,7 @@
       <find>PAL</find>
       <find>player</find>
       <find>PLAYER</find>
+      <find>//</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -685,8 +682,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Gameplay.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="78" column="10" selection-start-line="78" selection-start-column="10" selection-end-line="78" selection-end-column="10" />
+        <state relative-caret-position="768">
+          <caret line="183" column="114" selection-start-line="183" selection-start-column="8" selection-end-line="183" selection-end-column="114" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#9948#9949#0" expanded="true" />

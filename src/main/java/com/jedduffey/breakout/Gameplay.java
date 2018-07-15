@@ -152,6 +152,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private void drawPaddle(Graphics g) {
         g.setColor(Color.WHITE);
         g.fillRect(currentPaddlePositionX, PADDLE_Y_POS, PADDLE_WIDTH, PADDLE_HEIGHT);
+        g.setColor(Color.RED);
+        g.fillRect(currentPaddlePositionX,PADDLE_Y_POS,1,PADDLE_HEIGHT);
     }
 
     private void drawScore(Graphics g) {
