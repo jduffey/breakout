@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class Main {
 
-    private static final int FRAME_WIDTH = 700;
+    static final int FRAME_WIDTH = 700;
     private static final int FRAME_HEIGHT = 600;
     private static final int FRAME_TOP_LEFT_X_POS = 100;
     private static final int FRAME_TOP_LEFT_Y_POS = 100;

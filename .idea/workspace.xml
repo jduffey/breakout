@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1e1f1ad-8831-4a3c-93b2-4a01a36d97c4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/BrickType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/BrickType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Gameplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Gameplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -25,8 +26,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="19" lean-forward="true" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+            <state relative-caret-position="51">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -34,8 +35,8 @@
       <file leaf-file-name="Gameplay.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Gameplay.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="35" column="57" selection-start-line="35" selection-start-column="57" selection-end-line="35" selection-end-column="57" />
+            <state relative-caret-position="425">
+              <caret line="78" column="10" selection-start-line="78" selection-start-column="10" selection-end-line="78" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#9948#9949#0" expanded="true" />
@@ -62,8 +63,8 @@
       <file leaf-file-name="BrickType.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/BrickType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+            <state relative-caret-position="85">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -387,10 +388,10 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/MapGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/BrickMapGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/BrickMap.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Gameplay.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/BrickType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Gameplay.java" />
       </list>
     </option>
   </component>
@@ -663,6 +664,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/BrickType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/BrickMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -677,8 +685,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Gameplay.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="57" selection-start-line="35" selection-start-column="57" selection-end-line="35" selection-end-column="57" />
+        <state relative-caret-position="425">
+          <caret line="78" column="10" selection-start-line="78" selection-start-column="10" selection-end-line="78" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#9948#9949#0" expanded="true" />
@@ -687,17 +695,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/BrickType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jedduffey/breakout/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="19" lean-forward="true" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>

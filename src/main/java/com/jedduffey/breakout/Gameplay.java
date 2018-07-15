@@ -14,7 +14,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private static final int INITIAL_BALL_X_VEL = -1; // Tutorial value is -1
     private static final int INITIAL_BALL_Y_VEL = -2; // Tutorial value is -2
     private static final int INITIAL_BALL_Y_POS = 350; // Tutorial value is 350
-    private static final int INITIAL_PADDLE_X_POS = 300; // Tutorial value is 310
 
     private static final int INITIAL_BRICKMAP_ROWS = 3; // Tutorial value is 3
     private static final int INITIAL_BRICKMAP_COLUMNS = 7; // Tutorial value is 7
@@ -65,6 +64,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         playState = false;
         currentScore = 0;
 
+        currentPaddlePositionX = Main.FRAME_WIDTH / 2 - PADDLE_WIDTH / 2;
+
         currentBallPositionX = (int) (50 + Math.random() * 600);
 
         currentBallPositionY = INITIAL_BALL_Y_POS;
@@ -74,7 +75,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         } else ballVelocityX = reverseBallVelocity(INITIAL_BALL_X_VEL);
 
         ballVelocityY = INITIAL_BALL_Y_VEL;
-        currentPaddlePositionX = INITIAL_PADDLE_X_POS;
+
         bricksRemaining = INITIAL_BRICKMAP_ROWS * INITIAL_BRICKMAP_COLUMNS;
         gameBrickMap = new BrickMap(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
         repaint();
