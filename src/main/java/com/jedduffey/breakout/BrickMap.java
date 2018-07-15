@@ -50,35 +50,32 @@ class BrickMap {
 
                 if (brickMapArray[i][j] == BrickType.WHITE) {
 
-                    g.setColor(Color.white);
-                    g.fillRect(j * brickWidth + 80, i * brickHeight + 50, brickWidth, brickHeight);
-                    g.setStroke(new BasicStroke(3));
-                    g.setColor(Color.gray);
-                    g.drawRect(j * brickWidth + 80, i * brickHeight + 50, brickWidth, brickHeight);
+                    setColorAndDrawBrickWithBorder(g, i, j, Color.WHITE);
+
                 } else if (brickMapArray[i][j] == BrickType.YELLOW) {
 
-                    g.setColor(Color.yellow);
-                    g.fillRect(j * brickWidth + 80, i * brickHeight + 50, brickWidth, brickHeight);
-                    g.setStroke(new BasicStroke(3));
-                    g.setColor(Color.gray);
-                    g.drawRect(j * brickWidth + 80, i * brickHeight + 50, brickWidth, brickHeight);
+                    setColorAndDrawBrickWithBorder(g, i, j, Color.YELLOW);
+
                 } else if (brickMapArray[i][j] == BrickType.ORANGE) {
 
-                    g.setColor(Color.orange);
-                    g.fillRect(j * brickWidth + 80, i * brickHeight + 50, brickWidth, brickHeight);
-                    g.setStroke(new BasicStroke(3));
-                    g.setColor(Color.gray);
-                    g.drawRect(j * brickWidth + 80, i * brickHeight + 50, brickWidth, brickHeight);
+                    setColorAndDrawBrickWithBorder(g, i, j, Color.ORANGE);
+
                 } else if (brickMapArray[i][j] == BrickType.RED) {
 
-                    g.setColor(Color.RED);
-                    g.fillRect(j * brickWidth + 80, i * brickHeight + 50, brickWidth, brickHeight);
-                    g.setStroke(new BasicStroke(3));
-                    g.setColor(Color.gray);
-                    g.drawRect(j * brickWidth + 80, i * brickHeight + 50, brickWidth, brickHeight);
+                    setColorAndDrawBrickWithBorder(g, i, j, Color.RED);
+
                 }
+
             }
         }
+    }
+
+    private void setColorAndDrawBrickWithBorder(Graphics2D g, int i, int j, Color color) {
+        g.setColor(color);
+        g.fillRect(j * brickWidth + 80, i * brickHeight + 50, brickWidth, brickHeight);
+        g.setStroke(new BasicStroke(3));
+        g.setColor(Color.gray);
+        g.drawRect(j * brickWidth + 80, i * brickHeight + 50, brickWidth, brickHeight);
     }
 
     void setBrickValueToDead(int row, int col) {
