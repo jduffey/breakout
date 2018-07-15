@@ -21,7 +21,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     private static final int PADDLE_Y_POS = 550; // Tutorial value is 550
     private static final int MIN_PADDLE_LEFT_X_POS = 0; // Tutorial value is 10
-    private static final int MAX_PADDLE_RIGHT_X_POS = 600; // Tutorial value is 600
+    private static final int MAX_PADDLE_RIGHT_X_POS = 700; // Tutorial value is 600
     private static final int LEFTMOST_ALLOWED_BALL_X_POS = 0; // Tutorial value is 0
     private static final int RIGHTMOST_ALLOWED_BALL_X_POS = 670; // Tutorial value is 670
     private static final int TOPMOST_ALLOWED_BALL_Y_POS = 0; // Tutorial value is 0
@@ -153,7 +153,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         g.setColor(Color.WHITE);
         g.fillRect(currentPaddlePositionX, PADDLE_Y_POS, PADDLE_WIDTH, PADDLE_HEIGHT);
         g.setColor(Color.RED);
-        g.fillRect(currentPaddlePositionX,PADDLE_Y_POS,1,PADDLE_HEIGHT);
+        g.fillRect(currentPaddlePositionX, PADDLE_Y_POS, 1, PADDLE_HEIGHT);
+        g.fillRect(currentPaddlePositionX + PADDLE_WIDTH, PADDLE_Y_POS, 1, PADDLE_HEIGHT);
     }
 
     private void drawScore(Graphics g) {
@@ -196,8 +197,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            if (currentPaddlePositionX >= MAX_PADDLE_RIGHT_X_POS) {
-                currentPaddlePositionX = MAX_PADDLE_RIGHT_X_POS;
+            if (currentPaddlePositionX + PADDLE_WIDTH >= MAX_PADDLE_RIGHT_X_POS) {
+                currentPaddlePositionX = MAX_PADDLE_RIGHT_X_POS - PADDLE_WIDTH;
             } else {
                 moveRight();
             }
