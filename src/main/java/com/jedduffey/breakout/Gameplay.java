@@ -132,7 +132,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     }
 
     private void drawPositionCounters(Graphics g) {
-        g.setColor(Color.white);
+        g.setColor(Color.WHITE);
         g.setFont(new Font("serif", Font.BOLD, 12));
         g.drawString("PaddleX: " + currentPaddlePositionX, 10, 570);
         g.drawString("BallX: " + currentBallPositionX, 110, 570);
@@ -142,48 +142,48 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     }
 
     private void drawBall(Graphics g) {
-        g.setColor(Color.yellow);
+        g.setColor(Color.YELLOW);
         g.fillOval(currentBallPositionX, currentBallPositionY, BALL_WIDTH, BALL_HEIGHT);
     }
 
     private void drawPaddle(Graphics g) {
-        g.setColor(Color.green);
+        g.setColor(Color.GREEN);
         g.fillRect(currentPaddlePositionX, PADDLE_Y_POS, PADDLE_WIDTH, PADDLE_HEIGHT);
     }
 
     private void drawScore(Graphics g) {
-        g.setColor(Color.white);
+        g.setColor(Color.WHITE);
         g.setFont(new Font("serif", Font.BOLD, 25));
         g.drawString("" + currentScore + " / " + possiblePoints, 592, 30);
     }
 
     private void drawBorders(Graphics g) {
-        g.setColor(Color.yellow);
+        g.setColor(Color.YELLOW);
         g.fillRect(0, 0, 3, 592); // Left border
         g.fillRect(0, 0, 692, 3); // Top border
         g.fillRect(691, 0, 3, 592); // Right border
     }
 
     private void drawBackground(Graphics g) {
-        g.setColor(Color.black);
+        g.setColor(Color.BLACK);
         g.fillRect(1, 1, 692, 592);
     }
 
     private void displayAskToRestartMessage(Graphics g) {
-        g.setColor(Color.red);
+        g.setColor(Color.RED);
         g.setFont(new Font("serif", Font.BOLD, 20));
         g.drawString("Press Enter to restart", 230, 350);
     }
 
     private void displayGameOverMessage(Graphics g) {
-        g.setColor(Color.red);
+        g.setColor(Color.RED);
         g.setFont(new Font("serif", Font.BOLD, 30));
         //int highestPossibleScore = INITIAL_BRICKMAP_ROWS * INITIAL_BRICKMAP_COLUMNS * SCORE_PER_BRICK_DESTROYED;
         g.drawString("Game Over! Score: " + currentScore, 190, 300);
     }
 
     private void displayWinningMessage(Graphics g) {
-        g.setColor(Color.red);
+        g.setColor(Color.RED);
         g.setFont(new Font("serif", Font.BOLD, 30));
         g.drawString("You Win! Score: " + currentScore, 190, 300);
     }
