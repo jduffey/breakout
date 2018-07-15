@@ -48,35 +48,16 @@ class BrickMap {
 
             for (int j = 0; j < brickMapArray[0].length; j++) {
 
-                if (brickMapArray[i][j] == BrickType.WHITE) {
-
-                    setColorAndDrawBrickWithBorder(g, i, j, Color.WHITE);
-
-                } else if (brickMapArray[i][j] == BrickType.YELLOW) {
-
-                    setColorAndDrawBrickWithBorder(g, i, j, Color.YELLOW);
-
-                } else if (brickMapArray[i][j] == BrickType.ORANGE) {
-
-                    setColorAndDrawBrickWithBorder(g, i, j, Color.ORANGE);
-
-                } else if (brickMapArray[i][j] == BrickType.RED) {
-
-                    setColorAndDrawBrickWithBorder(g, i, j, Color.RED);
-
-                }
+                g.setColor(brickMapArray[i][j].color);
+                g.fillRect(j * brickWidth + 80, i * brickHeight + 50, brickWidth, brickHeight);
+                g.setStroke(new BasicStroke(3));
+                g.setColor(Color.BLACK);
+                g.drawRect(j * brickWidth + 80, i * brickHeight + 50, brickWidth, brickHeight);
 
             }
         }
     }
 
-    private void setColorAndDrawBrickWithBorder(Graphics2D g, int i, int j, Color color) {
-        g.setColor(color);
-        g.fillRect(j * brickWidth + 80, i * brickHeight + 50, brickWidth, brickHeight);
-        g.setStroke(new BasicStroke(3));
-        g.setColor(Color.GRAY);
-        g.drawRect(j * brickWidth + 80, i * brickHeight + 50, brickWidth, brickHeight);
-    }
 
     void setBrickValueToDead(int row, int col) {
         brickMapArray[row][col] = BrickType.DEAD;
