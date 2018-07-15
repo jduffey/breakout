@@ -33,7 +33,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private static final int BALL_WIDTH = 20; // Tutorial value is 20
     private static final int BALL_HEIGHT = 20; // Tutorial value is 20
 
-    static final Color BACKGROUND_AND_DEAD_BRICK_COLOR = Color.LIGHT_GRAY;
+    static final Color BACKGROUND_COLOR = Color.LIGHT_GRAY;
 
     private boolean playState;
     private int currentScore;
@@ -167,7 +167,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     }
 
     private void drawBackground(Graphics g) {
-        g.setColor(BACKGROUND_AND_DEAD_BRICK_COLOR);
+        g.setColor(BACKGROUND_COLOR);
         g.fillRect(1, 1, 692, 592);
     }
 
