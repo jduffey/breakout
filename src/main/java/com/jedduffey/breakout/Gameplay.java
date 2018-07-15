@@ -210,11 +210,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         if (playState) {
 
-            // Detects collision of ball and paddle and reverses Y velocity if so
-            if (new Rectangle(currentBallPositionX, currentBallPositionY, BALL_WIDTH, BALL_HEIGHT)
-                    .intersects(new Rectangle(currentPaddlePositionX, PADDLE_Y_POS, PADDLE_WIDTH, PADDLE_HEIGHT))) {
-                ballVelocityY = reverseBallVelocity(ballVelocityY);
-            }
+            logicIfBallCollidesWithPaddle();
 
             A:
             for (int i = 0; i < gameBrickMap.brickMapArray.length; i++) {
@@ -253,6 +249,13 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         repaint();
 
+    }
+
+    private void logicIfBallCollidesWithPaddle() {
+        if (new Rectangle(currentBallPositionX, currentBallPositionY, BALL_WIDTH, BALL_HEIGHT)
+                .intersects(new Rectangle(currentPaddlePositionX, PADDLE_Y_POS, PADDLE_WIDTH, PADDLE_HEIGHT))) {
+            ballVelocityY = reverseBallVelocity(ballVelocityY);
+        }
     }
 
     private void ballMovementLogic() {
