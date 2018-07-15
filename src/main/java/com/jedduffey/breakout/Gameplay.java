@@ -37,6 +37,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private boolean playState;
     private int currentScore;
     private int bricksRemaining;
+    private int possiblePoints;
 
     private Timer timer;
 
@@ -76,6 +77,13 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         bricksRemaining = INITIAL_BRICKMAP_ROWS * INITIAL_BRICKMAP_COLUMNS;
         gameBrickMap = new BrickMap(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
         repaint();
+
+        possiblePoints = 0;
+        for (int i = 0; i < gameBrickMap.brickMapArray.length; i++) {
+            for (int j = 0; j < gameBrickMap.brickMapArray[0].length; j++) {
+                possiblePoints += gameBrickMap.brickMapArray[i][j].pointValue;
+            }
+        }
     }
 
     public void paint(Graphics g) {
@@ -138,7 +146,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private void drawScore(Graphics g) {
         g.setColor(Color.white);
         g.setFont(new Font("serif", Font.BOLD, 25));
-        g.drawString("" + currentScore, 592, 30);
+        g.drawString("" + currentScore + " / " + possiblePoints, 592, 30);
     }
 
     private void drawBorders(Graphics g) {
