@@ -2,6 +2,7 @@ package com.jedduffey.breakout;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.EnumSet;
 
@@ -24,21 +25,16 @@ class BrickMap {
 
     private void assignBrickStatuses(BrickType map[][]) {
 
+        ArrayList allMyEnums = new ArrayList<>(Arrays.asList(BrickType.values()));
+        allMyEnums.remove(BrickType.DEAD);
+
         for (int i = 0; i < map.length; i++) {
 
             for (int j = 0; j < map[0].length; j++) {
 
-                ArrayList<BrickType> allBrickTypes = new ArrayList<>();
-                allBrickTypes.add(BrickType.WHITE);
-                allBrickTypes.add(BrickType.YELLOW);
-                allBrickTypes.add(BrickType.ORANGE);
-                allBrickTypes.add(BrickType.RED);
-                allBrickTypes.add(BrickType.GREEN);
-                allBrickTypes.add(BrickType.BLUE);
+                Collections.shuffle(allMyEnums);
 
-                Collections.shuffle(allBrickTypes);
-
-                map[i][j] = allBrickTypes.get(0);
+                map[i][j] = (BrickType) allMyEnums.get(0);
 
             }
         }
