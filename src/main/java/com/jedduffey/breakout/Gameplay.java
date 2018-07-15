@@ -62,7 +62,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         playState = false;
 
-        currentBallPositionX = (int) (50 + Math.random()*600);
+        currentBallPositionX = (int) (50 + Math.random() * 600);
 
         currentBallPositionY = INITIAL_BALL_Y_POS;
 
