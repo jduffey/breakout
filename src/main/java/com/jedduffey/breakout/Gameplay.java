@@ -101,37 +101,55 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     }
 
     private void drawActiveGameplayElements(Graphics g) {
-        // Background
-        g.setColor(Color.black);
-        g.fillRect(1, 1, 692, 592);
 
-        // Tell the BrickMap instance to draw its bricks
+        drawBackground(g);
+
         gameBrickMap.draw((Graphics2D) g);
 
-        // Borders
-        g.setColor(Color.yellow);
-        g.fillRect(0, 0, 3, 592); // Left border
-        g.fillRect(0, 0, 692, 3); // Top border
-        g.fillRect(691, 0, 3, 592); // Right border
+        drawBorders(g);
 
-        // Score
-        g.setColor(Color.white);
-        g.setFont(new Font("serif", Font.BOLD, 25));
-        g.drawString("" + currentScore, 592, 30);
+        drawScore(g);
 
-        // Paddle
-        g.setColor(Color.green);
-        g.fillRect(currentPlayerPositionX, PADDLE_Y_POS, PADDLE_WIDTH, PADDLE_HEIGHT);
+        drawPaddle(g);
 
-        // Ball
-        g.setColor(Color.yellow);
-        g.fillOval(currentBallPositionX, currentBallPositionY, BALL_WIDTH, BALL_HEIGHT);
+        drawBall(g);
 
-        // Positions
+        drawPositionCounters(g);
+    }
+
+    private void drawPositionCounters(Graphics g) {
         g.setColor(Color.white);
         g.setFont(new Font("serif", Font.BOLD, 12));
         g.drawString("PaddleX: " + currentPlayerPositionX + "      BallX: " +
                 currentBallPositionX + "      BallY: " + currentBallPositionY, 10, 570);
+    }
+
+    private void drawBall(Graphics g) {
+        g.setColor(Color.yellow);
+        g.fillOval(currentBallPositionX, currentBallPositionY, BALL_WIDTH, BALL_HEIGHT);
+    }
+
+    private void drawPaddle(Graphics g) {
+        g.setColor(Color.green);
+        g.fillRect(currentPlayerPositionX, PADDLE_Y_POS, PADDLE_WIDTH, PADDLE_HEIGHT);
+    }
+
+    private void drawScore(Graphics g) {
+        g.setColor(Color.white);
+        g.setFont(new Font("serif", Font.BOLD, 25));
+        g.drawString("" + currentScore, 592, 30);
+    }
+
+    private void drawBorders(Graphics g) {
+        g.setColor(Color.yellow);
+        g.fillRect(0, 0, 3, 592); // Left border
+        g.fillRect(0, 0, 692, 3); // Top border
+        g.fillRect(691, 0, 3, 592); // Right border
+    }
+
+    private void drawBackground(Graphics g) {
+        g.setColor(Color.black);
+        g.fillRect(1, 1, 692, 592);
     }
 
     private void displayAskToRestartMessage(Graphics g) {
