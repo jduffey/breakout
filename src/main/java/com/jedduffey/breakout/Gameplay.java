@@ -27,7 +27,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private static final int TOPMOST_ALLOWED_BALL_Y_POS = 0; // Tutorial value is 0
     private static final int BOTTOMMOST_ALLOWED_BALL_Y_POS = 570; // Tutorial value is 570
 
-    private static final int PADDLE_WIDTH = 100; // Tutorial value is 100
+    private static final int INITIAL_PADDLE_WIDTH = 100; // Tutorial value is 100
     private static final int PADDLE_HEIGHT = 8; // Tutorial value is 8
     private static final int BALL_WIDTH = 20; // Tutorial value is 20
     private static final int BALL_HEIGHT = 20; // Tutorial value is 20
@@ -47,6 +47,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private int ballVelocityX;
     private int ballVelocityY;
 
+    private int paddleWidth;
+
     private BrickMap gameBrickMap;
 
     Gameplay() {
@@ -63,8 +65,9 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         playState = false;
         currentScore = 0;
+        paddleWidth = INITIAL_PADDLE_WIDTH;
 
-        currentPaddlePositionX = Main.FRAME_WIDTH / 2 - PADDLE_WIDTH / 2;
+        currentPaddlePositionX = Main.FRAME_WIDTH / 2 - INITIAL_PADDLE_WIDTH / 2;
 
         currentBallPositionX = (int) (50 + Math.random() * 600);
 
@@ -91,6 +94,9 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     public void paint(Graphics g) {
 
         drawActiveGameplayElements(g);
+
+        // Well this works...
+        //paddleWidth++;
 
         boolean allBricksHaveBeenDestroyed = bricksRemaining <= 0;
         boolean ballFallsBelowPlayZone = currentBallPositionY > BOTTOMMOST_ALLOWED_BALL_Y_POS;
@@ -142,6 +148,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         g.drawString("BallY: " + currentBallPositionY, 210, 570);
         g.drawString("XVel: " + ballVelocityX, 310, 570);
         g.drawString("YVel: " + ballVelocityY, 410, 570);
+        g.drawString("PaddleWidth: " + paddleWidth, 510, 570);
     }
 
     private void drawBall(Graphics g) {
@@ -151,10 +158,10 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     private void drawPaddle(Graphics g) {
         g.setColor(Color.WHITE);
-        g.fillRect(currentPaddlePositionX, PADDLE_Y_POS, PADDLE_WIDTH, PADDLE_HEIGHT);
+        g.fillRect(currentPaddlePositionX, PADDLE_Y_POS, paddleWidth, PADDLE_HEIGHT);
         g.setColor(Color.RED);
         g.fillRect(currentPaddlePositionX, PADDLE_Y_POS, 1, PADDLE_HEIGHT);
-        g.fillRect(currentPaddlePositionX + PADDLE_WIDTH, PADDLE_Y_POS, 1, PADDLE_HEIGHT);
+        g.fillRect(currentPaddlePositionX + paddleWidth, PADDLE_Y_POS, 1, PADDLE_HEIGHT);
     }
 
     private void drawScore(Graphics g) {
@@ -197,8 +204,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            if (currentPaddlePositionX + PADDLE_WIDTH >= MAX_PADDLE_RIGHT_X_POS) {
-                currentPaddlePositionX = MAX_PADDLE_RIGHT_X_POS - PADDLE_WIDTH;
+            if (currentPaddlePositionX + paddleWidth >= MAX_PADDLE_RIGHT_X_POS) {
+                currentPaddlePositionX = MAX_PADDLE_RIGHT_X_POS - paddleWidth;
             } else {
                 moveRight();
             }
@@ -258,13 +265,17 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
                             currentScore += gameBrickMap.brickMapArray[i][j].pointValue;
 
-                            gameBrickMap.setBrickValueToDead(i, j);
+                            if (gameBrickMap.brickMapArray[i][j] == BrickType.RED || gameBrickMap.brickMapArray[i][j] == BrickType.ORANGE) {
+                                this.paddleWidth += 20;
+                            } else
+                                this.paddleWidth = INITIAL_PADDLE_WIDTH;
 
                             if (currentBallPositionX + 19 <= brickRectangle.x || currentBallPositionX + 1 >= brickRectangle.x + brickRectangle.width) {
                                 ballVelocityX = -ballVelocityX;
                             } else {
                                 ballVelocityY = -ballVelocityY;
                             }
+                            gameBrickMap.setBrickValueToDead(i, j);
 
                             break A;
                         }
@@ -282,7 +293,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     private void logicIfBallCollidesWithPaddle() {
         if (new Rectangle(currentBallPositionX, currentBallPositionY, BALL_WIDTH, BALL_HEIGHT)
-                .intersects(new Rectangle(currentPaddlePositionX, PADDLE_Y_POS, PADDLE_WIDTH, PADDLE_HEIGHT))) {
+                .intersects(new Rectangle(currentPaddlePositionX, PADDLE_Y_POS, paddleWidth, PADDLE_HEIGHT))) {
             ballVelocityY = reverseBallVelocity(ballVelocityY);
         }
     }

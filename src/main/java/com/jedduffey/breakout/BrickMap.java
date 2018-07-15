@@ -27,6 +27,7 @@ class BrickMap {
         ArrayList allMyEnums = new ArrayList<>(Arrays.asList(BrickType.values()));
         allMyEnums.remove(BrickType.DEAD);
 
+
         for (int i = 0; i < map.length; i++) {
 
             for (int j = 0; j < map[0].length; j++) {
