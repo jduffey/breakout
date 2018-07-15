@@ -261,30 +261,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                         Rectangle brickRectangle = new Rectangle(brickX, brickY, brickWidth, brickHeight);
                         Rectangle ballRectangle = new Rectangle(currentBallPositionX, currentBallPositionY, BALL_WIDTH, BALL_HEIGHT);
 
-                        if (ballRectangle.intersects(brickRectangle)) {
-
-                            if (gameBrickMap.brickMapArray[i][j] == BrickType.RED || gameBrickMap.brickMapArray[i][j] ==
-                                    BrickType.ORANGE || gameBrickMap.brickMapArray[i][j] == BrickType.YELLOW) {
-                                this.paddleWidth += 20;
-                            } else
-                                this.paddleWidth = INITIAL_PADDLE_WIDTH;
-
-                            if (currentBallPositionX + 19 <= brickRectangle.x || currentBallPositionX + 1 >= brickRectangle.x + brickRectangle.width) {
-                                ballVelocityX = -ballVelocityX;
-                            } else {
-                                ballVelocityY = -ballVelocityY;
-                            }
-
-                            if (gameBrickMap.brickMapArray[i][j] == BrickType.GREEN || gameBrickMap.brickMapArray[i][j] == BrickType.BLUE) {
-                                gameBrickMap.brickMapArray[i][j] = BrickType.WHITE;
-                            } else{
-                                currentScore += gameBrickMap.brickMapArray[i][j].pointValue;
-                                bricksRemaining--;
-                                gameBrickMap.setBrickValueToDead(i, j);
-                            }
-
-                            break A;
-                        }
+                        if (ballHitsBrick(i, j, brickRectangle, ballRectangle)) break A;
                     }
                 }
             }
@@ -295,6 +272,34 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         repaint();
 
+    }
+
+    private boolean ballHitsBrick(int i, int j, Rectangle brickRectangle, Rectangle ballRectangle) {
+        if (ballRectangle.intersects(brickRectangle)) {
+
+            if (gameBrickMap.brickMapArray[i][j] == BrickType.RED || gameBrickMap.brickMapArray[i][j] ==
+                    BrickType.ORANGE || gameBrickMap.brickMapArray[i][j] == BrickType.YELLOW) {
+                this.paddleWidth += 20;
+            } else
+                this.paddleWidth = INITIAL_PADDLE_WIDTH;
+
+            if (currentBallPositionX + 19 <= brickRectangle.x || currentBallPositionX + 1 >= brickRectangle.x + brickRectangle.width) {
+                ballVelocityX = -ballVelocityX;
+            } else {
+                ballVelocityY = -ballVelocityY;
+            }
+
+            if (gameBrickMap.brickMapArray[i][j] == BrickType.GREEN || gameBrickMap.brickMapArray[i][j] == BrickType.BLUE) {
+                gameBrickMap.brickMapArray[i][j] = BrickType.WHITE;
+            } else{
+                currentScore += gameBrickMap.brickMapArray[i][j].pointValue;
+                bricksRemaining--;
+                gameBrickMap.setBrickValueToDead(i, j);
+            }
+
+            return true;
+        }
+        return false;
     }
 
     private void logicIfBallCollidesWithPaddle() {
