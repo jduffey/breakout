@@ -1,6 +1,9 @@
 package com.jedduffey.breakout;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.EnumSet;
 
 class BrickMap {
 
@@ -25,19 +28,18 @@ class BrickMap {
 
             for (int j = 0; j < map[0].length; j++) {
 
-                map[i][j] = BrickType.WHITE;
+                ArrayList<BrickType> allBrickTypes = new ArrayList<>();
+                allBrickTypes.add(BrickType.WHITE);
+                allBrickTypes.add(BrickType.YELLOW);
+                allBrickTypes.add(BrickType.ORANGE);
+                allBrickTypes.add(BrickType.RED);
+                allBrickTypes.add(BrickType.GREEN);
+                allBrickTypes.add(BrickType.BLUE);
 
-                double random = Math.random();
+                Collections.shuffle(allBrickTypes);
 
-                if (random < 0.5 && random >= 0.25) {
-                    map[i][j] = BrickType.YELLOW;
-                }
-                if (random < 0.25 && random >= 0.10) {
-                    map[i][j] = BrickType.ORANGE;
-                }
-                if (random < 0.10) {
-                    map[i][j] = BrickType.RED;
-                }
+                map[i][j] = allBrickTypes.get(0);
+
             }
         }
     }
