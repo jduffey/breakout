@@ -153,14 +153,14 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private void displayAskToRestartMessage(Graphics g) {
         g.setColor(Color.red);
         g.setFont(new Font("serif", Font.BOLD, 20));
-        g.drawString("Press Enter to restart ", 230, 350);
+        g.drawString("Press Enter to restart", 230, 350);
     }
 
     private void displayGameOverMessage(Graphics g) {
         g.setColor(Color.red);
         g.setFont(new Font("serif", Font.BOLD, 30));
         int highestPossibleScore = INITIAL_BRICKMAP_ROWS * INITIAL_BRICKMAP_COLUMNS * SCORE_PER_BRICK_DESTROYED;
-        g.drawString("Game Over. Score: " + currentScore + " / " +
+        g.drawString("Game Over! Score: " + currentScore + " / " +
                 highestPossibleScore, 190, 300);
     }
 
