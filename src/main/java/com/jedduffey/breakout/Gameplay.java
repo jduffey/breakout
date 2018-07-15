@@ -95,7 +95,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         }
 
         g.dispose();
-
     }
 
     private void drawActiveGameplayElements(Graphics g) {
