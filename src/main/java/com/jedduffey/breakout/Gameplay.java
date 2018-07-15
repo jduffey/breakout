@@ -134,8 +134,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private void drawPositionCounters(Graphics g) {
         g.setColor(Color.white);
         g.setFont(new Font("serif", Font.BOLD, 12));
-        g.drawString("PaddleX: " + currentPaddlePositionX + "      BallX: " +
-                currentBallPositionX + "      BallY: " + currentBallPositionY, 10, 570);
+        g.drawString("PaddleX: " + currentPaddlePositionX, 10, 570);
+        g.drawString("BallX: " + currentBallPositionX, 110, 570);
+        g.drawString("BallY: " + currentBallPositionY, 210, 570);
+        g.drawString("XVel: " + ballVelocityX, 310, 570);
+        g.drawString("YVel: " + ballVelocityY, 410, 570);
     }
 
     private void drawBall(Graphics g) {
