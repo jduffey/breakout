@@ -230,7 +230,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                         if (ballRectangle.intersects(brickRectangle)) {
 
                             bricksRemaining--;
-                            currentScore += SCORE_PER_BRICK_DESTROYED;
+                            
+                            currentScore += gameBrickMap.brickMapArray[i][j].pointValue;
 
                             gameBrickMap.setBrickValueToDead(i, j);
 
