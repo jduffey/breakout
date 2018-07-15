@@ -13,7 +13,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     private static final int INITIAL_BALL_X_VEL = -1; // Tutorial value is -1
     private static final int INITIAL_BALL_Y_VEL = -2; // Tutorial value is -2
-    //private static final int INITIAL_BALL_X_POS = 120; // Tutorial value is 120
     private static final int INITIAL_BALL_Y_POS = 350; // Tutorial value is 350
     private static final int INITIAL_PADDLE_X_POS = 310; // Tutorial value is 310
 
