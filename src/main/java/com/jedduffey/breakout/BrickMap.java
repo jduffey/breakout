@@ -74,7 +74,7 @@ class BrickMap {
         g.setColor(color);
         g.fillRect(j * brickWidth + 80, i * brickHeight + 50, brickWidth, brickHeight);
         g.setStroke(new BasicStroke(3));
-        g.setColor(Color.gray);
+        g.setColor(Color.GRAY);
         g.drawRect(j * brickWidth + 80, i * brickHeight + 50, brickWidth, brickHeight);
     }
 
