@@ -217,7 +217,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
                 for (int j = 0; j < gameBrickMap.brickMapArray[0].length; j++) {
 
-                    if (gameBrickMap.brickMapArray[i][j]) {
+                    if (gameBrickMap.brickMapArray[i][j] != BrickType.DEAD) {
 
                         int brickX = j * gameBrickMap.brickWidth + 80;
                         int brickY = i * gameBrickMap.brickHeight + 50;
@@ -229,7 +229,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
                         if (ballRectangle.intersects(brickRectangle)) {
 
-                            gameBrickMap.setBrickValueToFalse(i, j);
+                            gameBrickMap.setBrickValueToDead(i, j);
 
                             bricksRemaining--;
                             currentScore += SCORE_PER_BRICK_DESTROYED;
