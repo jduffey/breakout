@@ -14,14 +14,14 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private static final int INITIAL_BALL_X_VEL = -1; // Tutorial value is -1
     private static final int INITIAL_BALL_Y_VEL = -2; // Tutorial value is -2
     private static final int INITIAL_BALL_Y_POS = 350; // Tutorial value is 350
-    private static final int INITIAL_PADDLE_X_POS = 310; // Tutorial value is 310
+    private static final int INITIAL_PADDLE_X_POS = 300; // Tutorial value is 310
 
     private static final int INITIAL_BRICKMAP_ROWS = 3; // Tutorial value is 3
     private static final int INITIAL_BRICKMAP_COLUMNS = 7; // Tutorial value is 7
     private static final int PADDLE_X_MOVEMENT_PER_CLICK = 20; // Tutorial value is 20
 
     private static final int PADDLE_Y_POS = 550; // Tutorial value is 550
-    private static final int MIN_PADDLE_LEFT_X_POS = 10; // Tutorial value is 10
+    private static final int MIN_PADDLE_LEFT_X_POS = 0; // Tutorial value is 10
     private static final int MAX_PADDLE_RIGHT_X_POS = 600; // Tutorial value is 600
     private static final int LEFTMOST_ALLOWED_BALL_X_POS = 0; // Tutorial value is 0
     private static final int RIGHTMOST_ALLOWED_BALL_X_POS = 670; // Tutorial value is 670
@@ -189,7 +189,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             }
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            if (currentPaddlePositionX < MIN_PADDLE_LEFT_X_POS) {
+            if (currentPaddlePositionX <= MIN_PADDLE_LEFT_X_POS) {
                 currentPaddlePositionX = MIN_PADDLE_LEFT_X_POS;
             } else {
                 moveLeft();
