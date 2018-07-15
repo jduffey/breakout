@@ -9,7 +9,7 @@ import java.awt.event.KeyListener;
 
 public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
-    private static final int TIMER_DELAY_VALUE = 8; // Tutorial value is 8
+    private static final int TIMER_DELAY_VALUE = 6; // Tutorial value is 8
 
     private static final int INITIAL_BALL_X_VEL = -1; // Tutorial value is -1
     private static final int INITIAL_BALL_Y_VEL = -2; // Tutorial value is -2
@@ -260,10 +260,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
                         if (ballRectangle.intersects(brickRectangle)) {
 
-                            bricksRemaining--;
-
-                            currentScore += gameBrickMap.brickMapArray[i][j].pointValue;
-
                             if (gameBrickMap.brickMapArray[i][j] == BrickType.RED || gameBrickMap.brickMapArray[i][j] ==
                                     BrickType.ORANGE || gameBrickMap.brickMapArray[i][j] == BrickType.YELLOW) {
                                 this.paddleWidth += 20;
@@ -276,7 +272,13 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                                 ballVelocityY = -ballVelocityY;
                             }
 
-                            gameBrickMap.setBrickValueToDead(i, j);
+                            if (gameBrickMap.brickMapArray[i][j] == BrickType.GREEN || gameBrickMap.brickMapArray[i][j] == BrickType.BLUE) {
+                                gameBrickMap.brickMapArray[i][j] = BrickType.WHITE;
+                            } else{
+                                gameBrickMap.setBrickValueToDead(i, j);
+                                bricksRemaining--;
+                                currentScore += gameBrickMap.brickMapArray[i][j].pointValue;
+                            }
 
                             break A;
                         }
