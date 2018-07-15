@@ -65,7 +65,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         playState = false;
         currentBallPositionX = INITIAL_BALL_X_POS;
         currentBallPositionY = INITIAL_BALL_Y_POS;
-        ballVelocityX = INITIAL_BALL_X_VEL;
+
+        if (Math.random() < 0.5) {
+            ballVelocityX = INITIAL_BALL_X_VEL;
+        } else ballVelocityX = -INITIAL_BALL_X_VEL;
+
         ballVelocityY = INITIAL_BALL_Y_VEL;
         currentPaddlePositionX = INITIAL_PADDLE_X_POS;
         currentScore = INITIAL_SCORE;
