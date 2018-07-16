@@ -153,7 +153,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         g.setColor(Color.YELLOW);
         g.fillOval(currentBallPositionX, currentBallPositionY, BALL_WIDTH, BALL_HEIGHT);
         g.setColor(Color.RED);
-        g.fillRect(currentBallPositionX, currentBallPositionY,2,2);
+        g.fillRect(currentBallPositionX, currentBallPositionY, 2, 2);
     }
 
     private void drawPaddle(Graphics g) {
@@ -292,7 +292,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
             if (gameBrickMap.brickMapArray[i][j] == BrickType.GREEN || gameBrickMap.brickMapArray[i][j] == BrickType.BLUE) {
                 gameBrickMap.brickMapArray[i][j] = BrickType.WHITE;
-            } else{
+            } else {
                 currentScore += gameBrickMap.brickMapArray[i][j].pointValue;
                 bricksRemaining--;
                 gameBrickMap.setBrickValueToDead(i, j);
@@ -307,6 +307,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         if (new Rectangle(currentBallPositionX, currentBallPositionY, BALL_WIDTH, BALL_HEIGHT)
                 .intersects(new Rectangle(currentPaddlePositionX, PADDLE_Y_POS, paddleWidth, PADDLE_HEIGHT))) {
+            currentBallPositionY--; // Seems to prevent ball getting "stuck" inside the paddle
             ballVelocityY = reverseBallVelocity(ballVelocityY);
         }
     }
