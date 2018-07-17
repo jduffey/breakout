@@ -9,7 +9,7 @@ import java.awt.event.KeyListener;
 
 public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
-    private static final int TIMER_DELAY_VALUE = 6; // Tutorial value is 8
+    private static final int TIMER_DELAY_VALUE = 1; // Tutorial value is 8
 
     private static final int INITIAL_BALL_X_VEL = -1; // Tutorial value is -1
     private static final int INITIAL_BALL_Y_VEL = -2; // Tutorial value is -2
@@ -27,7 +27,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private static final int TOPMOST_ALLOWED_BALL_Y_POS = 0; // Tutorial value is 0
     private static final int BOTTOMMOST_ALLOWED_BALL_Y_POS = 570; // Tutorial value is 570
 
-    private static final int INITIAL_PADDLE_WIDTH = 100; // Tutorial value is 100
+    private static final int INITIAL_PADDLE_WIDTH = 680; // Tutorial value is 100
     private static final int PADDLE_HEIGHT = 8; // Tutorial value is 8
     private static final int BALL_WIDTH = 20; // Tutorial value is 20
     private static final int BALL_HEIGHT = 20; // Tutorial value is 20
@@ -84,6 +84,9 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         repaint();
 
         possiblePoints = 0;
+        // This will give an inaccurate count of possible points
+        // because it counts colored bricks but the actual score
+        // counts only white when certain ones turn to white
         for (int i = 0; i < gameBrickMap.brickMapArray.length; i++) {
             for (int j = 0; j < gameBrickMap.brickMapArray[0].length; j++) {
                 possiblePoints += gameBrickMap.brickMapArray[i][j].pointValue;
