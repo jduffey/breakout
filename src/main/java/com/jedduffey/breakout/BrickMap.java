@@ -25,7 +25,7 @@ class BrickMap {
     private void assignBrickStatuses(BrickType map[][]) {
 
         ArrayList allMyEnums = new ArrayList<>(Arrays.asList(BrickType.values()));
-        allMyEnums.remove(BrickType.DEAD);
+        allMyEnums.remove(BrickType.B00);
 
 
         for (int i = 0; i < map.length; i++) {
@@ -59,6 +59,6 @@ class BrickMap {
 
 
     void setBrickValueToDead(int row, int col) {
-        brickMapArray[row][col] = BrickType.DEAD;
+        brickMapArray[row][col] = BrickType.B00;
     }
 }

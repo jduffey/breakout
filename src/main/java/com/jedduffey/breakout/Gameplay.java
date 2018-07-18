@@ -283,7 +283,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
                 for (int j = 0; j < gameBrickMap.brickMapArray[0].length; j++) {
 
-                    if (gameBrickMap.brickMapArray[i][j] != BrickType.DEAD) {
+                    if (gameBrickMap.brickMapArray[i][j] != BrickType.B00) {
 
                         int brickX = j * gameBrickMap.brickWidth + 80;
                         int brickY = i * gameBrickMap.brickHeight + 50;
@@ -310,8 +310,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         if (ballRectangle.intersects(brickRectangle)) {
 
-            if (gameBrickMap.brickMapArray[i][j] == BrickType.RED || gameBrickMap.brickMapArray[i][j] ==
-                    BrickType.ORANGE || gameBrickMap.brickMapArray[i][j] == BrickType.YELLOW) {
+            if (gameBrickMap.brickMapArray[i][j] == BrickType.B06 || gameBrickMap.brickMapArray[i][j] ==
+                    BrickType.B05 || gameBrickMap.brickMapArray[i][j] == BrickType.B04) {
                 this.paddleWidth += 20;
             } else
                 this.paddleWidth = INITIAL_PADDLE_WIDTH;
@@ -322,16 +322,16 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 ballVelocityY = -ballVelocityY;
             }
 
-            if (gameBrickMap.brickMapArray[i][j] == BrickType.RED) {
-                gameBrickMap.brickMapArray[i][j] = BrickType.ORANGE;
-            } else if (gameBrickMap.brickMapArray[i][j] == BrickType.ORANGE) {
-                gameBrickMap.brickMapArray[i][j] = BrickType.YELLOW;
-            } else if (gameBrickMap.brickMapArray[i][j] == BrickType.YELLOW) {
-                gameBrickMap.brickMapArray[i][j] = BrickType.BLUE;
-            } else if (gameBrickMap.brickMapArray[i][j] == BrickType.BLUE) {
-                gameBrickMap.brickMapArray[i][j] = BrickType.GREEN;
-            } else if (gameBrickMap.brickMapArray[i][j] == BrickType.GREEN) {
-                gameBrickMap.brickMapArray[i][j] = BrickType.WHITE;
+            if (gameBrickMap.brickMapArray[i][j] == BrickType.B06) {
+                gameBrickMap.brickMapArray[i][j] = BrickType.B05;
+            } else if (gameBrickMap.brickMapArray[i][j] == BrickType.B05) {
+                gameBrickMap.brickMapArray[i][j] = BrickType.B04;
+            } else if (gameBrickMap.brickMapArray[i][j] == BrickType.B04) {
+                gameBrickMap.brickMapArray[i][j] = BrickType.B03;
+            } else if (gameBrickMap.brickMapArray[i][j] == BrickType.B03) {
+                gameBrickMap.brickMapArray[i][j] = BrickType.B02;
+            } else if (gameBrickMap.brickMapArray[i][j] == BrickType.B02) {
+                gameBrickMap.brickMapArray[i][j] = BrickType.B01;
             } else {
                 currentScore += gameBrickMap.brickMapArray[i][j].pointValue;
                 bricksRemaining--;
