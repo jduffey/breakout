@@ -34,6 +34,13 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     static final Color BACKGROUND_COLOR = Color.DARK_GRAY;
     static final Color BALL_COLOR = Color.WHITE;
+    static final Color GAME_INFO_COUNTER_COLOR = Color.WHITE;
+    static final Color PADDLE_COLOR = Color.WHITE;
+    static final Color PADDLE_ENDCAPS_COLOR = Color.RED;
+    static final Color SCORE_COLOR = Color.WHITE;
+    static final Color ASK_TO_RESTART_MESSAGE_COLOR = Color.RED;
+    static final Color GAMEOVER_MESSAGE_COLOR = Color.RED;
+    static final Color WINNING_MESSAGE_COLOR = Color.RED;
 
     private boolean playState;
     private int currentScore;
@@ -171,7 +178,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     }
 
     private void drawPositionCounters(Graphics g) {
-        g.setColor(Color.WHITE);
+        g.setColor(GAME_INFO_COUNTER_COLOR);
         g.setFont(new Font("serif", Font.BOLD, 12));
         g.drawString("PaddleX: " + currentPaddlePositionX, 10, 570);
         g.drawString("BallX: " + currentBallPositionX, 100, 570);
@@ -190,15 +197,15 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     }
 
     private void drawPaddle(Graphics g) {
-        g.setColor(Color.WHITE);
+        g.setColor(PADDLE_COLOR);
         g.fillRect(currentPaddlePositionX, PADDLE_Y_POS, paddleWidth, PADDLE_HEIGHT);
-        g.setColor(Color.RED);
+        g.setColor(PADDLE_ENDCAPS_COLOR);
         g.fillRect(currentPaddlePositionX, PADDLE_Y_POS, 1, PADDLE_HEIGHT);
         g.fillRect(currentPaddlePositionX + paddleWidth, PADDLE_Y_POS, 1, PADDLE_HEIGHT);
     }
 
     private void drawScore(Graphics g) {
-        g.setColor(Color.WHITE);
+        g.setColor(SCORE_COLOR);
         g.setFont(new Font("serif", Font.BOLD, 25));
         g.drawString("" + currentScore + " / " + possiblePoints, 592, 30);
     }
@@ -216,19 +223,19 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     }
 
     private void displayAskToRestartMessage(Graphics g) {
-        g.setColor(Color.RED);
+        g.setColor(ASK_TO_RESTART_MESSAGE_COLOR);
         g.setFont(new Font("serif", Font.BOLD, 20));
         g.drawString("Press Enter to restart", 230, 350);
     }
 
     private void displayGameOverMessage(Graphics g) {
-        g.setColor(Color.RED);
+        g.setColor(GAMEOVER_MESSAGE_COLOR);
         g.setFont(new Font("serif", Font.BOLD, 30));
         g.drawString("Game Over! Score: " + currentScore, 190, 300);
     }
 
     private void displayWinningMessage(Graphics g) {
-        g.setColor(Color.RED);
+        g.setColor(WINNING_MESSAGE_COLOR);
         g.setFont(new Font("serif", Font.BOLD, 30));
         g.drawString("You Win! Score: " + currentScore, 190, 300);
     }
