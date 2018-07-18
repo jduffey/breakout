@@ -21,13 +21,13 @@ public enum BrickType {
     }
 
     private static class PointValue {
-        public static final int B00_PTS = 0;
-        public static final int B01_PTS = 5;
-        public static final int B02_PTS = 6;
-        public static final int B03_PTS = 7;
-        public static final int B04_PTS = 8;
-        public static final int B05_PTS = 9;
-        public static final int B06_PTS = 10;
+        static final int B00_PTS = 0;
+        static final int B01_PTS = 5;
+        static final int B02_PTS = 6;
+        static final int B03_PTS = 7;
+        static final int B04_PTS = 8;
+        static final int B05_PTS = 9;
+        static final int B06_PTS = 10;
     }
 
 }
