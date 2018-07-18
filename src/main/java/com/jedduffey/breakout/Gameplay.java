@@ -91,13 +91,70 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         gameBrickMap = new BrickMap(INITIAL_BRICKMAP_ROWS, INITIAL_BRICKMAP_COLUMNS);
         repaint();
 
+        calculateTotalPossiblePoints();
+    }
+
+    private void calculateTotalPossiblePoints() {
+
         possiblePoints = 0;
-        // This will give an inaccurate count of possible points
-        // because it counts colored bricks but the actual score
-        // counts only white when certain ones turn to white
+        int thisBricksTotalInherentPoints = 0;
+
         for (int i = 0; i < gameBrickMap.brickMapArray.length; i++) {
+
             for (int j = 0; j < gameBrickMap.brickMapArray[0].length; j++) {
-                possiblePoints += gameBrickMap.brickMapArray[i][j].pointValue;
+
+                if (gameBrickMap.brickMapArray[i][j] == BrickType.B06) {
+                    thisBricksTotalInherentPoints =
+                            BrickType.B06.pointValue +
+                                    BrickType.B05.pointValue +
+                                    BrickType.B04.pointValue +
+                                    BrickType.B03.pointValue +
+                                    BrickType.B02.pointValue +
+                                    BrickType.B01.pointValue +
+                                    BrickType.B00.pointValue;
+
+                } else if (gameBrickMap.brickMapArray[i][j] == BrickType.B05) {
+                    thisBricksTotalInherentPoints =
+                            BrickType.B05.pointValue +
+                                    BrickType.B04.pointValue +
+                                    BrickType.B03.pointValue +
+                                    BrickType.B02.pointValue +
+                                    BrickType.B01.pointValue +
+                                    BrickType.B00.pointValue;
+
+                } else if (gameBrickMap.brickMapArray[i][j] == BrickType.B04) {
+                    thisBricksTotalInherentPoints =
+                            BrickType.B04.pointValue +
+                                    BrickType.B03.pointValue +
+                                    BrickType.B02.pointValue +
+                                    BrickType.B01.pointValue +
+                                    BrickType.B00.pointValue;
+
+                } else if (gameBrickMap.brickMapArray[i][j] == BrickType.B03) {
+                    thisBricksTotalInherentPoints =
+                            BrickType.B03.pointValue +
+                                    BrickType.B02.pointValue +
+                                    BrickType.B01.pointValue +
+                                    BrickType.B00.pointValue;
+
+                } else if (gameBrickMap.brickMapArray[i][j] == BrickType.B02) {
+                    thisBricksTotalInherentPoints =
+                            BrickType.B02.pointValue +
+                                    BrickType.B01.pointValue +
+                                    BrickType.B00.pointValue;
+
+                } else if (gameBrickMap.brickMapArray[i][j] == BrickType.B01) {
+                    thisBricksTotalInherentPoints =
+                            BrickType.B01.pointValue +
+                                    BrickType.B00.pointValue;
+
+                } else if (gameBrickMap.brickMapArray[i][j] == BrickType.B00) {
+                    thisBricksTotalInherentPoints =
+                            BrickType.B00.pointValue;
+
+                }
+
+                possiblePoints += thisBricksTotalInherentPoints;
             }
         }
     }
