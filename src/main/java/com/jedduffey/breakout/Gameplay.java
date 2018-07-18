@@ -145,21 +145,28 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private void drawColorHelper(Graphics g) {
 
         int leftmostXPos = 550;
+        int yPos = 5;
         int colorHelperWidth = 20;
+        int colorHelperHeight = 5;
         int colorHelperGap = 4;
 
         g.setColor(Color.RED);
-        g.fillRect(leftmostXPos, 5, colorHelperWidth, 5);
+        g.fillRect(leftmostXPos, yPos, colorHelperWidth, colorHelperHeight);
+
         g.setColor(Color.ORANGE);
-        g.fillRect(leftmostXPos + (colorHelperWidth + colorHelperGap), 5, colorHelperWidth, 5);
+        g.fillRect(leftmostXPos + (colorHelperWidth + colorHelperGap), yPos, colorHelperWidth, colorHelperHeight);
+
         g.setColor(Color.YELLOW);
-        g.fillRect(leftmostXPos + 2 * (colorHelperWidth + colorHelperGap), 5, colorHelperWidth, 5);
+        g.fillRect(leftmostXPos + 2 * (colorHelperWidth + colorHelperGap), yPos, colorHelperWidth, colorHelperHeight);
+
         g.setColor(Color.CYAN);
-        g.fillRect(leftmostXPos + 3 * (colorHelperWidth + colorHelperGap), 5, colorHelperWidth, 5);
+        g.fillRect(leftmostXPos + 3 * (colorHelperWidth + colorHelperGap), yPos, colorHelperWidth, colorHelperHeight);
+
         g.setColor(Color.GREEN);
-        g.fillRect(leftmostXPos + 4 * (colorHelperWidth + colorHelperGap), 5, colorHelperWidth, 5);
+        g.fillRect(leftmostXPos + 4 * (colorHelperWidth + colorHelperGap), yPos, colorHelperWidth, colorHelperHeight);
+
         g.setColor(Color.WHITE);
-        g.fillRect(leftmostXPos + 5 * (colorHelperWidth + colorHelperGap), 5, colorHelperWidth, 5);
+        g.fillRect(leftmostXPos + 5 * (colorHelperWidth + colorHelperGap), yPos, colorHelperWidth, colorHelperHeight);
     }
 
     private void drawPositionCounters(Graphics g) {
