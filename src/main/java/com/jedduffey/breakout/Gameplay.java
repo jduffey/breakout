@@ -131,6 +131,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         drawBorders(g);
 
+        drawColorHelper(g);
+
         drawScore(g);
 
         drawPaddle(g);
@@ -138,6 +140,26 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         drawBall(g);
 
         drawPositionCounters(g);
+    }
+
+    private void drawColorHelper(Graphics g) {
+
+        int leftmostXPos = 550;
+        int colorHelperWidth = 20;
+        int colorHelperGap = 4;
+
+        g.setColor(Color.RED);
+        g.fillRect(leftmostXPos, 5, colorHelperWidth, 5);
+        g.setColor(Color.ORANGE);
+        g.fillRect(leftmostXPos + (colorHelperWidth + colorHelperGap), 5, colorHelperWidth, 5);
+        g.setColor(Color.YELLOW);
+        g.fillRect(leftmostXPos + 2 * (colorHelperWidth + colorHelperGap), 5, colorHelperWidth, 5);
+        g.setColor(Color.CYAN);
+        g.fillRect(leftmostXPos + 3 * (colorHelperWidth + colorHelperGap), 5, colorHelperWidth, 5);
+        g.setColor(Color.GREEN);
+        g.fillRect(leftmostXPos + 4 * (colorHelperWidth + colorHelperGap), 5, colorHelperWidth, 5);
+        g.setColor(Color.WHITE);
+        g.fillRect(leftmostXPos + 5 * (colorHelperWidth + colorHelperGap), 5, colorHelperWidth, 5);
     }
 
     private void drawPositionCounters(Graphics g) {
