@@ -375,6 +375,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         if (ballRectangle.intersects(brickRectangle)) {
 
+            currentScore += gameBrickMap.brickMapArray[i][j].pointValue;
+
             if (gameBrickMap.brickMapArray[i][j] == BrickType.B06 || gameBrickMap.brickMapArray[i][j] ==
                     BrickType.B05 || gameBrickMap.brickMapArray[i][j] == BrickType.B04) {
                 this.paddleWidth += 20;
@@ -398,7 +400,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             } else if (gameBrickMap.brickMapArray[i][j] == BrickType.B02) {
                 gameBrickMap.brickMapArray[i][j] = BrickType.B01;
             } else {
-                currentScore += gameBrickMap.brickMapArray[i][j].pointValue;
                 bricksRemaining--;
                 gameBrickMap.setBrickValueToDead(i, j);
             }
