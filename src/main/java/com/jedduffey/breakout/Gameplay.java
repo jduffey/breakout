@@ -264,7 +264,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private void drawScore(Graphics g) {
         g.setColor(SCORE_COLOR);
         g.setFont(new Font("serif", Font.BOLD, 25));
-        g.drawString("" + currentScore + " / " + possiblePoints, 592, 30);
+        g.drawString("" + currentScore + " / " + possiblePoints, 550, 30);
     }
 
     private void drawBorders(Graphics g) {
