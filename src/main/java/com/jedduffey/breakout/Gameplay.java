@@ -33,6 +33,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private static final int BALL_HEIGHT = 20; // Tutorial value is 20
 
     static final Color BACKGROUND_COLOR = Color.DARK_GRAY;
+    static final Color BALL_COLOR = Color.WHITE;
 
     private boolean playState;
     private int currentScore;
@@ -182,7 +183,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     }
 
     private void drawBall(Graphics g) {
-        g.setColor(Color.YELLOW);
+        g.setColor(BALL_COLOR);
         g.fillOval(currentBallPositionX, currentBallPositionY, BALL_WIDTH, BALL_HEIGHT);
         g.setColor(Color.RED);
         g.fillRect(currentBallPositionX, currentBallPositionY, 2, 2);
