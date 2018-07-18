@@ -14,6 +14,7 @@ public enum BrickType {
 
     public Color color;
     public int pointValue;
+    public BrickType afterHitGoesToThisBrickType;
 
     BrickType(Color color, int pointValue) {
         this.color = color;

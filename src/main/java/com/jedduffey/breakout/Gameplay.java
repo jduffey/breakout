@@ -9,7 +9,7 @@ import java.awt.event.KeyListener;
 
 public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
-    private static final int TIMER_DELAY_VALUE = 1; // Tutorial value is 8
+    private static final int TIMER_DELAY_VALUE = 4; // Tutorial value is 8
 
     private static final int INITIAL_BALL_X_VEL = -1; // Tutorial value is -1
     private static final int INITIAL_BALL_Y_VEL = -2; // Tutorial value is -2
@@ -27,7 +27,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private static final int TOPMOST_ALLOWED_BALL_Y_POS = 0; // Tutorial value is 0
     private static final int BOTTOMMOST_ALLOWED_BALL_Y_POS = 570; // Tutorial value is 570
 
-    private static final int INITIAL_PADDLE_WIDTH = 680; // Tutorial value is 100
+    private static final int INITIAL_PADDLE_WIDTH = 100; // Tutorial value is 100
     private static final int PADDLE_HEIGHT = 8; // Tutorial value is 8
     private static final int BALL_WIDTH = 20; // Tutorial value is 20
     private static final int BALL_HEIGHT = 20; // Tutorial value is 20
@@ -293,7 +293,15 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 ballVelocityY = -ballVelocityY;
             }
 
-            if (gameBrickMap.brickMapArray[i][j] == BrickType.GREEN || gameBrickMap.brickMapArray[i][j] == BrickType.BLUE) {
+            if (gameBrickMap.brickMapArray[i][j] == BrickType.RED) {
+                gameBrickMap.brickMapArray[i][j] = BrickType.ORANGE;
+            } else if (gameBrickMap.brickMapArray[i][j] == BrickType.ORANGE) {
+                gameBrickMap.brickMapArray[i][j] = BrickType.YELLOW;
+            } else if (gameBrickMap.brickMapArray[i][j] == BrickType.YELLOW) {
+                gameBrickMap.brickMapArray[i][j] = BrickType.BLUE;
+            } else if (gameBrickMap.brickMapArray[i][j] == BrickType.BLUE) {
+                gameBrickMap.brickMapArray[i][j] = BrickType.GREEN;
+            } else if (gameBrickMap.brickMapArray[i][j] == BrickType.GREEN) {
                 gameBrickMap.brickMapArray[i][j] = BrickType.WHITE;
             } else {
                 currentScore += gameBrickMap.brickMapArray[i][j].pointValue;
