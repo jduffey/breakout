@@ -150,22 +150,22 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         int colorHelperHeight = 5;
         int colorHelperGap = 4;
 
-        g.setColor(Color.RED);
+        g.setColor(BrickType.B06.color);
         g.fillRect(leftmostXPos + 0 * (colorHelperWidth + colorHelperGap), yPos, colorHelperWidth, colorHelperHeight);
 
-        g.setColor(Color.ORANGE);
+        g.setColor(BrickType.B05.color);
         g.fillRect(leftmostXPos + 1 * (colorHelperWidth + colorHelperGap), yPos, colorHelperWidth, colorHelperHeight);
 
-        g.setColor(Color.YELLOW);
+        g.setColor(BrickType.B04.color);
         g.fillRect(leftmostXPos + 2 * (colorHelperWidth + colorHelperGap), yPos, colorHelperWidth, colorHelperHeight);
 
-        g.setColor(Color.CYAN);
+        g.setColor(BrickType.B03.color);
         g.fillRect(leftmostXPos + 3 * (colorHelperWidth + colorHelperGap), yPos, colorHelperWidth, colorHelperHeight);
 
-        g.setColor(Color.GREEN);
+        g.setColor(BrickType.B02.color);
         g.fillRect(leftmostXPos + 4 * (colorHelperWidth + colorHelperGap), yPos, colorHelperWidth, colorHelperHeight);
 
-        g.setColor(Color.WHITE);
+        g.setColor(BrickType.B01.color);
         g.fillRect(leftmostXPos + 5 * (colorHelperWidth + colorHelperGap), yPos, colorHelperWidth, colorHelperHeight);
     }
 
